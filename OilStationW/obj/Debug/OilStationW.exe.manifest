@@ -290,7 +290,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oaalTYCBeJYkpvykogESvEx0hQQZuiTSwrYXKdGL8bk=</dsig:DigestValue>
+        <dsig:DigestValue>xCAi9Fdz7H1Wp6w0NuILXomFO+T9Oedmfay+wpLgjGA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -355,14 +355,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OilStationW.exe" size="1046464">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OilStationW.exe" size="1046976">
       <assemblyIdentity name="OilStationW" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4ZX+QvQO6VXJAYo5W0GqPeSKl3gmh4j/K+jwQTby3Ys=</dsig:DigestValue>
+        <dsig:DigestValue>c4lTGoBWGXAw9jQgx1pB+QnAz9yx3LkDXReO2ZKZT54=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

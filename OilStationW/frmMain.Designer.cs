@@ -180,6 +180,7 @@
             this.rbAddUser.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbAddUser.SmallImage")));
             this.rbAddUser.Tag = "frmUsers";
             this.rbAddUser.Text = "مستخدمي النظام";
+            this.rbAddUser.ToolTip = "users";
             this.rbAddUser.Click += new System.EventHandler(this.rbAddUser_Click);
             // 
             // ribbonTab2
