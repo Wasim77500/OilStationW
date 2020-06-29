@@ -14,14 +14,14 @@
     <framework targetVersion="4.6" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="OilStationW.exe.manifest" size="27328">
+    <dependentAssembly dependencyType="install" codebase="OilStationW.exe.manifest" size="26624">
       <assemblyIdentity name="OilStationW.exe" version="1.0.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gRZqr//Er5VGmX6wuMIrElOt4+n7ivwfERgbNB6bSA8=</dsig:DigestValue>
+        <dsig:DigestValue>U/4Sckweqv2NanA1Ma3HJzAQM89L2bdWpxsgXh2iJCg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

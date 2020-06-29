@@ -74,7 +74,7 @@ namespace OilStationW.Accounts
 
 
 
-                txtDeptTotal.Text = (Convert.ToDouble(txtDeptTotal.Text.Trim()) + Convert.ToDouble(dgvJourDetails[clmDept.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString();
+                txtDeptTotal.Text = (Convert.ToDouble(txtDeptTotal.Text.Trim()) + Convert.ToDouble(dgvJourDetails[clmDept.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###.##");
 
 
             }
@@ -172,7 +172,7 @@ namespace OilStationW.Accounts
                 }
             }
            
-            txtDeptTotal.Text = Math.Round(dDeptTotal, glb_function.glb_iMainCurrDecimal).ToString();
+            txtDeptTotal.Text = Math.Round(dDeptTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###.##");
 
             txtDeptTotal.BackColor = Color.LawnGreen;          
             

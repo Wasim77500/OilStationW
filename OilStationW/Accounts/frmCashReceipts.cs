@@ -114,7 +114,7 @@ namespace OilStationW.Accounts
 
 
 
-                txtCreditTotal.Text = (Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString();
+                txtCreditTotal.Text = (Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###.##");
 
 
             }
@@ -175,7 +175,7 @@ namespace OilStationW.Accounts
                 }
             }
            
-            txtCreditTotal.Text = Math.Round(dCreditTotal, glb_function.glb_iMainCurrDecimal).ToString();
+            txtCreditTotal.Text = Math.Round(dCreditTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###.##");
 
 
           
