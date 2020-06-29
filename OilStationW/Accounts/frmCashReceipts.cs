@@ -116,7 +116,7 @@ namespace OilStationW.Accounts
 
                 txtCreditTotal.Text = (Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###.##");
 
-
+                //Test git hub
             }
 
 

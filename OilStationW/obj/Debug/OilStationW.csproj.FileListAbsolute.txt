@@ -199,3 +199,4 @@ D:\OilStationW\OilStationW\obj\Debug\OilStationW.application
 D:\OilStationW\OilStationW\obj\Debug\OilStationW.csproj.CopyComplete
 D:\OilStationW\OilStationW\obj\Debug\OilStationW.exe
 D:\OilStationW\OilStationW\obj\Debug\OilStationW.pdb
+D:\OilStationW\OilStationW\obj\Debug\OilStationW.csprojAssemblyReference.cache
