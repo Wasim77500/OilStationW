@@ -234,9 +234,10 @@ namespace OilStationW.Reports
             
             report.SetDataSource(dtReport);
 
-            report.Refresh();
+           // report.Refresh();
             frm.CrystalReportsViewer1.ReportSource = report;
-            frm.CrystalReportsViewer1.Refresh();
+            report.SetParameterValue("From", dtpDialyDate.Value.ToString("dd/MM/yyyy"));
+            //  frm.CrystalReportsViewer1.Refresh();
             frm.ShowDialog();
         }
     }
