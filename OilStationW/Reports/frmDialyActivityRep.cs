@@ -77,7 +77,7 @@ namespace OilStationW.Reports
                        " join journal_details d on (h.Pkid = d.header_id) " +
                        " join accounts a on (a.pkid = d.acc_id) " +
                        " where h.jour_date between str_to_date('" + dtpDialyDate.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpDialyDate.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') " +
-                       " and   a.Acc_no  like '6%' " +
+                       " and   a.Acc_no  like '6110100001%' " +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
                        " having sum(d.main_value) != 0),0) TodayAcc, " +
@@ -86,7 +86,7 @@ namespace OilStationW.Reports
                        " join journal_details d on (h.Pkid = d.header_id) " +
                        " join accounts a on (a.pkid = d.acc_id) " +
                        " where h.jour_date between str_to_date('01/" + dtpDialyDate.Value.ToString("MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpDialyDate.Value.AddDays(-1).ToString("dd/MM/yyyy") + "', '%d/%m/%Y') " +
-                       " and  a.Acc_no  like '6%' " +
+                       " and  a.Acc_no  like '6110100001%' " +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
                        " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR " +
@@ -126,7 +126,7 @@ namespace OilStationW.Reports
                        " join journal_details d on (h.Pkid = d.header_id) " +
                        " join accounts a on (a.pkid = d.acc_id) " +
                        " where h.jour_date between str_to_date('" + dtpDialyDate.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpDialyDate.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') " +
-                       " and a.Acc_no  like '5%'  " +
+                       " and a.Acc_no  like '5%' and a.Acc_no not in ('5110100001','5120100001','5140100001','5130100001') and a.Acc_no not like '52213%' " +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
                        " having sum(d.main_value) != 0),0) TodayAcc, " +
@@ -135,7 +135,7 @@ namespace OilStationW.Reports
                        " join journal_details d on (h.Pkid = d.header_id) " +
                        " join accounts a on (a.pkid = d.acc_id) " +
                        " where h.jour_date between str_to_date('01/" + dtpDialyDate.Value.ToString("MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpDialyDate.Value.AddDays(-1).ToString("dd/MM/yyyy") + "', '%d/%m/%Y') " +
-                       " and a.Acc_no  like '5%'  " +
+                       " and a.Acc_no  like '5%' and a.Acc_no not in ('5110100001','5120100001','5140100001','5130100001') and a.Acc_no not like '52213%' " +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
                        " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR " +
@@ -188,7 +188,7 @@ namespace OilStationW.Reports
                        " join journal_details d on (h.Pkid = d.header_id) " +
                        " join accounts a on (a.pkid = d.acc_id) " +
                        " where h.jour_date between str_to_date('01/" + dtpDialyDate.Value.ToString("MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpDialyDate.Value.AddDays(-1).ToString("dd/MM/yyyy") + "', '%d/%m/%Y') " +
-                       " and a.Acc_no not like '5%' and a.Acc_no not like '6%' " +
+                       " and a.Acc_no not like '5%' and a.Acc_no not like '6%' and a.acc_no not like '4%'" +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
                        " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR " +

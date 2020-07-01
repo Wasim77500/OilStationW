@@ -59,5 +59,10 @@ namespace OilStationW.Files
         {
             btnOk_Click(null, null);
         }
+
+        private void frmFindBranches_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

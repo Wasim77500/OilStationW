@@ -189,6 +189,7 @@
             this.Name = "frmFindBranches";
             this.Text = "البحث عن الفروع";
             this.Titel = "البحث عن الفروع";
+            this.Load += new System.EventHandler(this.frmFindBranches_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtSearchField, 0);
             this.Controls.SetChildIndex(this.btnFind, 0);
