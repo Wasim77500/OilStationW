@@ -35,10 +35,11 @@
             this.txtHeaderNote = new myText();
             this.dtpJourDate = new myDate();
             this.btnFind = new SmallButton();
-            this.txtJourNo = new myText();
+            this.txtPkid = new myText();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtJourNo = new myText();
             this.dgvJourDetails = new myDataGrid();
             this.clmPKid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAccId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +57,6 @@
             this.txtDeptTotal = new myText();
             this.txtCreditTotal = new myText();
             this.txtDiff = new myText();
-            this.txtPkid = new myText();
             this.txtBranchId = new myText();
             this.nmbExchangeRate = new myNumber();
             this.nmbEditor = new myNumber();
@@ -73,10 +73,11 @@
             this.myGroupBox1.Controls.Add(this.txtHeaderNote);
             this.myGroupBox1.Controls.Add(this.dtpJourDate);
             this.myGroupBox1.Controls.Add(this.btnFind);
-            this.myGroupBox1.Controls.Add(this.txtJourNo);
+            this.myGroupBox1.Controls.Add(this.txtPkid);
             this.myGroupBox1.Controls.Add(this.label2);
             this.myGroupBox1.Controls.Add(this.label1);
             this.myGroupBox1.Controls.Add(this.label7);
+            this.myGroupBox1.Controls.Add(this.txtJourNo);
             this.myGroupBox1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myGroupBox1.ForeColor = System.Drawing.Color.Chocolate;
             this.myGroupBox1.Location = new System.Drawing.Point(119, 32);
@@ -132,18 +133,18 @@
             this.btnFind.UseVisualStyleBackColor = false;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
-            // txtJourNo
+            // txtPkid
             // 
-            this.txtJourNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtJourNo.Enabled = false;
-            this.txtJourNo.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtJourNo.Location = new System.Drawing.Point(284, 22);
-            this.txtJourNo.Name = "txtJourNo";
-            this.txtJourNo.Size = new System.Drawing.Size(196, 26);
-            this.txtJourNo.TabIndex = 28;
-            this.txtJourNo.W_ColumnName = "";
-            this.txtJourNo.W_OldValue = "";
-            this.txtJourNo.w_Tran = myText.Tran.None;
+            this.txtPkid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPkid.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtPkid.Location = new System.Drawing.Point(358, 22);
+            this.txtPkid.Name = "txtPkid";
+            this.txtPkid.Size = new System.Drawing.Size(58, 26);
+            this.txtPkid.TabIndex = 75;
+            this.txtPkid.Visible = false;
+            this.txtPkid.W_ColumnName = "";
+            this.txtPkid.W_OldValue = "";
+            this.txtPkid.w_Tran = myText.Tran.None;
             // 
             // label2
             // 
@@ -177,6 +178,19 @@
             this.label7.Size = new System.Drawing.Size(50, 18);
             this.label7.TabIndex = 25;
             this.label7.Text = "رقم القيد";
+            // 
+            // txtJourNo
+            // 
+            this.txtJourNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtJourNo.Enabled = false;
+            this.txtJourNo.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtJourNo.Location = new System.Drawing.Point(284, 22);
+            this.txtJourNo.Name = "txtJourNo";
+            this.txtJourNo.Size = new System.Drawing.Size(196, 26);
+            this.txtJourNo.TabIndex = 28;
+            this.txtJourNo.W_ColumnName = "";
+            this.txtJourNo.W_OldValue = "";
+            this.txtJourNo.w_Tran = myText.Tran.None;
             // 
             // dgvJourDetails
             // 
@@ -397,19 +411,6 @@
             this.txtDiff.W_OldValue = "";
             this.txtDiff.w_Tran = myText.Tran.None;
             // 
-            // txtPkid
-            // 
-            this.txtPkid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPkid.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtPkid.Location = new System.Drawing.Point(55, 32);
-            this.txtPkid.Name = "txtPkid";
-            this.txtPkid.Size = new System.Drawing.Size(58, 26);
-            this.txtPkid.TabIndex = 75;
-            this.txtPkid.Visible = false;
-            this.txtPkid.W_ColumnName = "";
-            this.txtPkid.W_OldValue = "";
-            this.txtPkid.w_Tran = myText.Tran.None;
-            // 
             // txtBranchId
             // 
             this.txtBranchId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -427,14 +428,14 @@
             // 
             this.nmbExchangeRate.DecimalPlaces = 7;
             this.nmbExchangeRate.Font = new System.Drawing.Font("Arial", 12F);
-            this.nmbExchangeRate.Location = new System.Drawing.Point(55, 91);
+            this.nmbExchangeRate.Location = new System.Drawing.Point(38, 91);
             this.nmbExchangeRate.Maximum = new decimal(new int[] {
             1215752191,
             23,
             0,
             0});
             this.nmbExchangeRate.Name = "nmbExchangeRate";
-            this.nmbExchangeRate.Size = new System.Drawing.Size(58, 26);
+            this.nmbExchangeRate.Size = new System.Drawing.Size(75, 26);
             this.nmbExchangeRate.TabIndex = 78;
             this.nmbExchangeRate.Visible = false;
             this.nmbExchangeRate.W_ColumnName = "";
@@ -454,6 +455,7 @@
             this.nmbEditor.Name = "nmbEditor";
             this.nmbEditor.Size = new System.Drawing.Size(100, 23);
             this.nmbEditor.TabIndex = 79;
+            this.nmbEditor.ThousandsSeparator = true;
             this.nmbEditor.Visible = false;
             this.nmbEditor.W_ColumnName = "";
             this.nmbEditor.W_OldValue = "";
@@ -488,7 +490,6 @@
             this.Controls.Add(this.nmbEditor);
             this.Controls.Add(this.nmbExchangeRate);
             this.Controls.Add(this.txtBranchId);
-            this.Controls.Add(this.txtPkid);
             this.Controls.Add(this.txtDiff);
             this.Controls.Add(this.txtCreditTotal);
             this.Controls.Add(this.txtDeptTotal);
@@ -512,7 +513,6 @@
             this.Controls.SetChildIndex(this.txtDeptTotal, 0);
             this.Controls.SetChildIndex(this.txtCreditTotal, 0);
             this.Controls.SetChildIndex(this.txtDiff, 0);
-            this.Controls.SetChildIndex(this.txtPkid, 0);
             this.Controls.SetChildIndex(this.txtBranchId, 0);
             this.Controls.SetChildIndex(this.nmbExchangeRate, 0);
             this.Controls.SetChildIndex(this.nmbEditor, 0);

@@ -27,10 +27,10 @@
     <ProductName>برنامج المحطات</ProductName>
     <PublisherName>شركة الفرات</PublisherName>
     <SuiteName>شركة الفرات</SuiteName>
-    <MinimumRequiredVersion>1.0.0.11</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.13</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -192,6 +192,12 @@
     <Compile Include="Accounts\frmJournal.Designer.cs">
       <DependentUpon>frmJournal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounts\frmOtherBranchExpenss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmOtherBranchExpenss.Designer.cs">
+      <DependentUpon>frmOtherBranchExpenss.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounts\frmPosting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,12 @@
     </Compile>
     <Compile Include="Files\frmViewEditTemplet.Designer.cs">
       <DependentUpon>frmViewEditTemplet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -569,6 +581,9 @@
     <EmbeddedResource Include="Accounts\frmJournal.resx">
       <DependentUpon>frmJournal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmOtherBranchExpenss.resx">
+      <DependentUpon>frmOtherBranchExpenss.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmPosting.resx">
       <DependentUpon>frmPosting.cs</DependentUpon>
     </EmbeddedResource>
@@ -604,6 +619,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Files\frmViewEditTemplet.resx">
       <DependentUpon>frmViewEditTemplet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

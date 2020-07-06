@@ -11,9 +11,10 @@ class ConnectionToMySQL
 {
     //test1
     //test2
-       internal static string strDbCnnString = "server=localhost;port=3300;charset=utf8;database=Stations;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+    //  internal static string strDbCnnString = "server=localhost;port=3300;charset=utf8;database=Stations;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
     // internal static string strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-    internal static MySqlConnection glb_cnn = new MySqlConnection(strDbCnnString);
+   
+    internal static MySqlConnection glb_cnn = new MySqlConnection(glb_function.strDbCnnString);
         internal static MySqlCommand comm;
         internal static MySqlTransaction trns;
         internal static bool isTrns = false;

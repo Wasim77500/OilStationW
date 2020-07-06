@@ -160,6 +160,7 @@
             this.Name = "frmChangePassword";
             this.Text = "تغيير كلمة السر";
             this.Titel = "تغيير كلمة السر";
+            this.Load += new System.EventHandler(this.frmChangePassword_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);

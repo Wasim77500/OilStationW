@@ -87,7 +87,7 @@ namespace OilStationW.Sales
                 dgvInvoices[clmPumpId.Index, i].Value = dtPumps.Rows[i]["pump_id"].ToString();
                 dgvInvoices[clmPumpNo.Index, i].Value = dtPumps.Rows[i]["pumpno"].ToString();
                 dgvInvoices[clmPumpName.Index, i].Value = dtPumps.Rows[i]["pumpname"].ToString();
-                dgvInvoices[clmOldCounter.Index, i].Value =Convert.ToDouble( dtPumps.Rows[i]["pumpcounter"].ToString()).ToString("###,###,###.##");
+                dgvInvoices[clmOldCounter.Index, i].Value =Convert.ToDouble( dtPumps.Rows[i]["pumpcounter"].ToString()).ToString("###,###,###,##0.##");
                 dgvInvoices[clmItemId.Index, i].Value = dtPumps.Rows[i]["item_id"].ToString();
                 dgvInvoices[clmItemName.Index, i].Value = dtPumps.Rows[i]["itemname"].ToString();
                 dgvInvoices[clmUnitSellingPrice.Index, i].Value = dtPumps.Rows[i]["UnitSellingPrice"].ToString();
@@ -118,9 +118,9 @@ namespace OilStationW.Sales
                     return;
                 }
 
-                dgvInvoices[clmQty.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = (nmbEditor.Value - Convert.ToDecimal( dgvInvoices[clmOldCounter.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value)).ToString("###,###,###.##");
-                dgvInvoices[clmTotalSellingPrice.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value =(Math.Round( Convert.ToDecimal(dgvInvoices[clmQty.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value) * Convert.ToDecimal(dgvInvoices[clmUnitSellingPrice.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value),glb_function.glb_iMainCurrDecimal)).ToString("###,###,###.##");
-                dgvInvoices[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString("###,###,###.##");
+                dgvInvoices[clmQty.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = (nmbEditor.Value - Convert.ToDecimal( dgvInvoices[clmOldCounter.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value)).ToString("###,###,###,##0.##");
+                dgvInvoices[clmTotalSellingPrice.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value =(Math.Round( Convert.ToDecimal(dgvInvoices[clmQty.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value) * Convert.ToDecimal(dgvInvoices[clmUnitSellingPrice.Index, Convert.ToUInt16(nmbEditor.Tag.ToString())].Value),glb_function.glb_iMainCurrDecimal)).ToString("###,###,###,##0.##");
+                dgvInvoices[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString("###,###,###,##0.##");
 
 
                 GetTotal();

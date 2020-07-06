@@ -114,7 +114,7 @@ namespace OilStationW.Accounts
 
 
 
-                txtCreditTotal.Text = (Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###.##");
+                txtCreditTotal.Text = (Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###,##0.##");
 
                 //Test git hub
             }
@@ -152,7 +152,7 @@ namespace OilStationW.Accounts
             {
                 nmbEditor.Visible = false;
 
-                dgvJourDetails[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString();
+                dgvJourDetails[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString("###,###,###,##0.##");
 
 
                 GetTotal();
@@ -175,7 +175,7 @@ namespace OilStationW.Accounts
                 }
             }
            
-            txtCreditTotal.Text = Math.Round(dCreditTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###.##");
+            txtCreditTotal.Text = Math.Round(dCreditTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###,##0.##");
 
 
           
@@ -393,12 +393,12 @@ namespace OilStationW.Accounts
                 if (dgvJourDetails[clmAccId.Index,i].Value ==null || dgvJourDetails[clmAccId.Index, i].Value.ToString()  == "")
                     continue;
 
-                double dMainValue = 0;
-                double dCurrValue = 0;
+                decimal dMainValue = 0;
+                decimal dCurrValue = 0;
 
                 if (Convert.ToDouble(dgvJourDetails[clmCredit.Index, i].Value.ToString() ) > 0)
                 {
-                    dMainValue = Convert.ToDouble(dgvJourDetails[clmCredit.Index, i].Value.ToString()) * -1;
+                    dMainValue = Convert.ToDecimal(dgvJourDetails[clmCredit.Index, i].Value.ToString()) * -1;
                     dCurrValue = dMainValue;
                 }
 

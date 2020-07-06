@@ -155,7 +155,7 @@ namespace OilStationW.Accounts
             SearchTree(tvAccounts.Nodes, txtNodeName.Text);
 
             if (icheckFind == 0)
-                glb_function.MsgBox("لم يتم العثور على اسم مطابق");
+                glb_function.MsgBox("الرجاء إدخال اسم الحساب أو جزء منه");
 
 
             icheckFind = 0;

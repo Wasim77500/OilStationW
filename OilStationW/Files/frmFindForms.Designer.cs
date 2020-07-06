@@ -37,12 +37,12 @@
             this.txtFormAr = new myText();
             this.label49 = new System.Windows.Forms.Label();
             this.dgvForms = new myDataGrid();
-            this.btnFind = new SmallButton();
-            this.btnClose = new MainButton();
-            this.btnOk = new MainButton();
             this.clmPkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmFormAr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmFormEn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFind = new SmallButton();
+            this.btnClose = new MainButton();
+            this.btnOk = new MainButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvForms)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,6 +127,27 @@
             this.dgvForms.W_ValName = "";
             this.dgvForms.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvForms_CellDoubleClick);
             // 
+            // clmPkid
+            // 
+            this.clmPkid.HeaderText = "Row id";
+            this.clmPkid.Name = "clmPkid";
+            this.clmPkid.ReadOnly = true;
+            this.clmPkid.Visible = false;
+            // 
+            // clmFormAr
+            // 
+            this.clmFormAr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmFormAr.HeaderText = "اسم الشاشة بالعربي";
+            this.clmFormAr.Name = "clmFormAr";
+            this.clmFormAr.ReadOnly = true;
+            // 
+            // clmFormEn
+            // 
+            this.clmFormEn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmFormEn.HeaderText = "الشاشة في البرنامج";
+            this.clmFormEn.Name = "clmFormEn";
+            this.clmFormEn.ReadOnly = true;
+            // 
             // btnFind
             // 
             this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(174)))), ((int)(((byte)(144)))));
@@ -142,6 +163,7 @@
             this.btnFind.Size = new System.Drawing.Size(26, 26);
             this.btnFind.TabIndex = 52;
             this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnClose
             // 
@@ -179,27 +201,6 @@
             this.btnOk.Text = "موافق";
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // clmPkid
-            // 
-            this.clmPkid.HeaderText = "Row id";
-            this.clmPkid.Name = "clmPkid";
-            this.clmPkid.ReadOnly = true;
-            this.clmPkid.Visible = false;
-            // 
-            // clmFormAr
-            // 
-            this.clmFormAr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmFormAr.HeaderText = "اسم الشاشة بالعربي";
-            this.clmFormAr.Name = "clmFormAr";
-            this.clmFormAr.ReadOnly = true;
-            // 
-            // clmFormEn
-            // 
-            this.clmFormEn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmFormEn.HeaderText = "الشاشة في البرنامج";
-            this.clmFormEn.Name = "clmFormEn";
-            this.clmFormEn.ReadOnly = true;
             // 
             // frmFindForms
             // 

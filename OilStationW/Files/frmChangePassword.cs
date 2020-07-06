@@ -55,5 +55,10 @@ namespace OilStationW.Files
                 return;
             }
         }
+
+        private void frmChangePassword_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

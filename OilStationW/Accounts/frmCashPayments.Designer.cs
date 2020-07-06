@@ -418,6 +418,7 @@
             this.nmbEditor.Name = "nmbEditor";
             this.nmbEditor.Size = new System.Drawing.Size(100, 23);
             this.nmbEditor.TabIndex = 80;
+            this.nmbEditor.ThousandsSeparator = true;
             this.nmbEditor.Visible = false;
             this.nmbEditor.W_ColumnName = "";
             this.nmbEditor.W_OldValue = "";

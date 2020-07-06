@@ -210,23 +210,23 @@ namespace OilStationW.Accounts
         }
         private void GetTotal()
         {
-            double dDeptTotal = 0;
-            double dCreditTotal = 0;
+            decimal dDeptTotal = 0;
+            decimal dCreditTotal = 0;
 
             for(int i=0;i<dgvJourDetails.Rows.Count;i++)
             {
                 if (dgvJourDetails[clmAccId.Index, i].Value!=null && dgvJourDetails[clmAccId.Index,i].Value .ToString() != "")
                 {
-                    double dDept = Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value);
-                    double dCredit = Convert.ToDouble(dgvJourDetails[clmCredit.Index, i].Value);
+                    decimal dDept = Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value);
+                    decimal dCredit = Convert.ToDecimal(dgvJourDetails[clmCredit.Index, i].Value);
                     dDeptTotal += dDept;
                     dCreditTotal += dCredit;
 
                 }
             }
-            txtDiff.Text = (dDeptTotal - dCreditTotal).ToString();
-            txtDeptTotal.Text = Math.Round(dDeptTotal, glb_function.glb_iMainCurrDecimal).ToString();
-            txtCreditTotal.Text = Math.Round(dCreditTotal, glb_function.glb_iMainCurrDecimal).ToString();
+            txtDiff.Text = (dDeptTotal - dCreditTotal).ToString("###,###,###,##0.##");
+            txtDeptTotal.Text = Math.Round(dDeptTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###,##0.##");
+            txtCreditTotal.Text = Math.Round(dCreditTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###,##0.##");
 
 
             if (txtCreditTotal.Text.Trim() == txtDeptTotal.Text.Trim())
@@ -248,7 +248,7 @@ namespace OilStationW.Accounts
             {
                 nmbEditor.Visible = false;
 
-                dgvJourDetails[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString();
+                dgvJourDetails[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString("###,###,###,##0.##");
 
 
                 GetTotal();
@@ -305,14 +305,14 @@ namespace OilStationW.Accounts
 
                 if (Convert.ToDouble(dtJournalData.Rows[i]["main_value"].ToString()) > 0)
                 {
-                    dgvJourDetails[clmDept.Index,i].Value = dtJournalData.Rows[i]["main_value"].ToString();
+                    dgvJourDetails[clmDept.Index,i].Value = (Convert.ToDecimal( dtJournalData.Rows[i]["main_value"].ToString())).ToString("###,###,###,##0.##");
                     // newRow.clmCurrValue= dtJournalData.Rows[i]["jour_value"].ToString();
                     dgvJourDetails[clmCredit.Index, i].Value = "0";
                 }
 
                 else
                 {
-                    dgvJourDetails[clmCredit.Index, i].Value = (Convert.ToDouble(dtJournalData.Rows[i]["main_value"].ToString()) * -1).ToString();
+                    dgvJourDetails[clmCredit.Index, i].Value = (Convert.ToDecimal(dtJournalData.Rows[i]["main_value"].ToString()) * -1).ToString("###,###,###,##0.##");
                     // newRow.clmCurrValue = (Convert.ToDouble(dtJournalData.Rows[i]["jour_value"].ToString()) * -1).ToString();
                     dgvJourDetails[clmDept.Index, i].Value = "0";
                 }
@@ -330,11 +330,11 @@ namespace OilStationW.Accounts
                 dgvJourDetails[clmJourNote.Index, i].Value= dtJournalData.Rows[i]["jour_details"].ToString();
                 dgvJourDetails[clmProfitCenter.Index, i].Value = dtJournalData.Rows[i]["profitCenter"].ToString();
 
-                
 
-
-                txtCreditTotal.Text = (Convert.ToDouble(txtCreditTotal.Text.Trim()) + Convert.ToDouble(dgvJourDetails[clmCredit.Index, i].Value)).ToString();
-                txtDeptTotal.Text = (Convert.ToDouble(txtDeptTotal.Text.Trim()) + Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value)).ToString();
+                decimal dCreditTemp = Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, i].Value);
+                decimal dDebitTemp = Convert.ToDecimal(txtDeptTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value);
+                txtCreditTotal.Text = (dCreditTemp).ToString("###,###,###,##0.##");
+                txtDeptTotal.Text = (dDebitTemp).ToString("###,###,###,##0.##");
 
 
             }
@@ -437,17 +437,17 @@ namespace OilStationW.Accounts
                 if (dgvJourDetails[clmAccId.Index,i].Value  == null || dgvJourDetails[clmAccId.Index, i].Value.ToString() == "")
                     continue;
 
-                double dMainValue = 0;
-                double dCurrValue = 0;
+                decimal dMainValue = 0;
+                decimal dCurrValue = 0;
 
-                if (Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value) > 0)
+                if (Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value) > 0)
                 {
-                    dMainValue = Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value);
+                    dMainValue = Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value);
                     dCurrValue = dMainValue;
                 }
                 else
                 {
-                    dMainValue = Convert.ToDouble(dgvJourDetails[clmCredit.Index, i].Value) * -1;
+                    dMainValue = Convert.ToDecimal(dgvJourDetails[clmCredit.Index, i].Value) * -1;
                     dCurrValue = dMainValue;
                 }
 
@@ -518,17 +518,17 @@ namespace OilStationW.Accounts
                     continue;
 
 
-                double dMainValue = 0;
-                double dCurrValue = 0;
+                decimal dMainValue = 0;
+                decimal dCurrValue = 0;
 
-                if (Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value) > 0)
+                if (Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value) > 0)
                 {
-                    dMainValue = Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value);
+                    dMainValue = Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value);
                     dCurrValue = dMainValue;
                 }
                 else
                 {
-                    dMainValue = Convert.ToDouble(dgvJourDetails[clmCredit.Index, i].Value) * -1;
+                    dMainValue = Convert.ToDecimal(dgvJourDetails[clmCredit.Index, i].Value) * -1;
                     dCurrValue = dMainValue;
                 }
 

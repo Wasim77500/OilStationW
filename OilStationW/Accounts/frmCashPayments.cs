@@ -12,6 +12,7 @@ namespace OilStationW.Accounts
     {
         bool bLoad = false;
         string strCasherAccId = "";
+       
         public frmCashPayments()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace OilStationW.Accounts
                 if (Convert.ToDouble(dtJournalData.Rows[i]["main_value"].ToString()) > 0)
                 {
                     dgvJourDetails.Rows.Add();
-                    dgvJourDetails[clmDept.Index, dgvJourDetails.Rows.Count - 1].Value  = dtJournalData.Rows[i]["main_value"].ToString();
+                    dgvJourDetails[clmDept.Index, dgvJourDetails.Rows.Count - 1].Value  =Convert.ToDecimal( dtJournalData.Rows[i]["main_value"].ToString()).ToString("###,###,###,##0.##");
                    
 
                 }
@@ -59,7 +60,7 @@ namespace OilStationW.Accounts
 
 
 
-                dgvJourDetails[clmPKid.Index, dgvJourDetails.Rows.Count - 1].Value = dtJournalData.Rows[i]["dpkid"].ToString();
+                dgvJourDetails[clmPKid.Index, dgvJourDetails.Rows.Count - 1].Value =Convert.ToDecimal( dtJournalData.Rows[i]["dpkid"].ToString()).ToString("###,###,###,##0.##");
 
 
 
@@ -74,7 +75,7 @@ namespace OilStationW.Accounts
 
 
 
-                txtDeptTotal.Text = (Convert.ToDouble(txtDeptTotal.Text.Trim()) + Convert.ToDouble(dgvJourDetails[clmDept.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###.##");
+                txtDeptTotal.Text = (Convert.ToDouble(txtDeptTotal.Text.Trim()) + Convert.ToDouble(dgvJourDetails[clmDept.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###,##0.##");
 
 
             }
@@ -149,7 +150,7 @@ namespace OilStationW.Accounts
             {
                 nmbEditor.Visible = false;
 
-                dgvJourDetails[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString();
+                dgvJourDetails[Convert.ToUInt16(nmbEditor.W_ColumnName), Convert.ToUInt16(nmbEditor.Tag.ToString())].Value = nmbEditor.Value.ToString("###,###,###,##0.##");
 
 
                 GetTotal();
@@ -157,14 +158,14 @@ namespace OilStationW.Accounts
         }
         private void GetTotal()
         {
-            double dDeptTotal = 0;
+            decimal dDeptTotal = 0;
           
 
             for (int i = 0; i < dgvJourDetails.Rows.Count; i++)
             {
                 if (dgvJourDetails[clmAccId.Index, i].Value != null && dgvJourDetails[clmAccId.Index, i].Value.ToString() != "")
                 {
-                    double dDept = Convert.ToDouble(dgvJourDetails[clmDept.Index, i].Value.ToString());
+                    decimal dDept = Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value.ToString());
                    
                     dDeptTotal += dDept;
                    
@@ -172,7 +173,7 @@ namespace OilStationW.Accounts
                 }
             }
            
-            txtDeptTotal.Text = Math.Round(dDeptTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###.##");
+            txtDeptTotal.Text = Math.Round(dDeptTotal, glb_function.glb_iMainCurrDecimal).ToString("###,###,###,##0.##");
 
             txtDeptTotal.BackColor = Color.LawnGreen;          
             
@@ -310,7 +311,7 @@ namespace OilStationW.Accounts
                 if (dgvJourDetails[clmAccId.Index, i].Value !=null && dgvJourDetails[clmAccId.Index,i].Value.ToString()  != "")
                     if (dgvJourDetails[clmDept.Index, i].Value.ToString() == "0")
                     {
-                        glb_function.MsgBox("الرجاء ادخال مبلغ الدائن  للحساب رقم" + "\n" + dgvJourDetails[clmAccNo.Index, i].Value.ToString());
+                        glb_function.MsgBox("الرجاء ادخال مبلغ المدين  للحساب رقم" + "\n" + dgvJourDetails[clmAccNo.Index, i].Value.ToString());
                         return false;
                     }
             }

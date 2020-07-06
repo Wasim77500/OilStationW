@@ -62,5 +62,10 @@ namespace OilStationW.Files
         {
             btnOk_Click(null, null);
         }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

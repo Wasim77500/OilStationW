@@ -22,8 +22,8 @@ class glb_function
     internal static bool blMsg;
     internal static string glb_iMainCurrId;
     internal static int glb_iMainCurrDecimal;
+    public static string strDbCnnString = "";
 
-   
 
     //internal static string strRoot = @"f:\erth\";
     internal static string strRoot = "";
