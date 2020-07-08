@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,14 +54,16 @@ namespace OilStationW
          
             if (lstBranches.SelectedValue.ToString()=="0")
             {
-                //  ConnectionToMySQL.strDbCnnString =  "server=192.168.1.7;port=3306;charset=utf8;database=headoffice2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-                glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.strDbCnnString =  "server=192.168.1.7;port=3306;charset=utf8;database=headoffice2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+               // glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+                
             }
             else if(lstBranches.SelectedValue.ToString() == "1")
             {
-                // ConnectionToMySQL.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-                glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=alobur2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+               // glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=alobur2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
             }
+            ConnectionToMySQL.glb_cnn = new MySqlConnection(glb_function.strDbCnnString);
             ConnectionToMySQL cnn = new ConnectionToMySQL();
             System.Data.DataTable MyDataTable;
             MyDataTable = cnn.GetDataTable("SELECT pkid,UserLoginName,UserFullName,password,notes,branch_id FROM users Where userLoginEncry = '" +  glb_function.Encrypt(txtUsername.Text.Trim(), true) + "' And Password = '" +  glb_function.Encrypt(txtPassword.Text.Trim(), true) + "'");
@@ -73,7 +76,7 @@ namespace OilStationW
                 glb_function.glb_strUserName = MyDataTable.Rows[0]["UserFullName"].ToString();
                 glb_function.glb_strUserId = MyDataTable.Rows[0]["pkid"].ToString();
                 glb_function.glb_strBranchPkid = MyDataTable.Rows[0]["branch_id"].ToString();
-
+                glb_function.glb_strBranchName = lstBranches.Text ;
                 if (glb_function.glb_strUserId != "1")
                 {
                     MyDataTable = cnn.GetDataTable("SELECT pkid currid,curr_decimal FROM currency where ismaincurr='1' ");
@@ -146,7 +149,9 @@ namespace OilStationW
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            FillBranches();
+            
+            
+           FillBranches();
         }
     }
 }

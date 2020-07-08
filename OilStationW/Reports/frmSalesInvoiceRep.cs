@@ -63,11 +63,13 @@ namespace OilStationW.Reports
 
 
 
-
+            //DataSet ds= new DataSet();
+            //ds.Tables.Add(dtReport);
 
 
 
             report.SetDataSource(dtReport);
+            
             report.SetParameterValue("From", (ckbSelectDate.Checked == false ? "" : dtpFrom.Value.ToString("dd/MM/yyyy")));
             report.SetParameterValue("To", (ckbSelectDate.Checked == false ? DateTime.Now.ToString("dd/MM/yyyy") : dtpTo.Value.ToString("dd/MM/yyyy")));
 

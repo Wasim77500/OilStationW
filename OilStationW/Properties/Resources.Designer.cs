@@ -203,6 +203,16 @@ namespace OilStationW.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HeadExp {
+            get {
+                object obj = ResourceManager.GetObject("HeadExp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap InventoryIn {
             get {
                 object obj = ResourceManager.GetObject("InventoryIn", resourceCulture);

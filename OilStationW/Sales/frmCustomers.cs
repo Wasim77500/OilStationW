@@ -40,6 +40,7 @@ namespace OilStationW.Sales
         }
         private void FillData()
         {
+            strDataFromDataSource = true;
             ConnectionToMySQL cnn = new ConnectionToMySQL();
             DataTable dtVendor = cnn.GetDataTable("SELECT pkid,acc_no,acc_name " +
                        " FROM accounts " +
@@ -52,6 +53,7 @@ namespace OilStationW.Sales
             lstAccName.DataSource = dtVendor.DefaultView;
             lstAccName.ValueMember = "pkid";
             lstAccName.DisplayMember = "acc_name";
+            strDataFromDataSource = false ;
 
         }
 

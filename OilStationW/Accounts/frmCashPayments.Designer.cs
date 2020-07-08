@@ -430,7 +430,7 @@
             // 
             this.txtBranchId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBranchId.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtBranchId.Location = new System.Drawing.Point(31, 77);
+            this.txtBranchId.Location = new System.Drawing.Point(31, 59);
             this.txtBranchId.Name = "txtBranchId";
             this.txtBranchId.Size = new System.Drawing.Size(58, 26);
             this.txtBranchId.TabIndex = 82;
@@ -443,7 +443,7 @@
             // 
             this.txtPkid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPkid.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtPkid.Location = new System.Drawing.Point(31, 50);
+            this.txtPkid.Location = new System.Drawing.Point(31, 32);
             this.txtPkid.Name = "txtPkid";
             this.txtPkid.Size = new System.Drawing.Size(58, 26);
             this.txtPkid.TabIndex = 81;
@@ -456,7 +456,7 @@
             // 
             this.txtAccNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAccNo.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtAccNo.Location = new System.Drawing.Point(31, 113);
+            this.txtAccNo.Location = new System.Drawing.Point(31, 88);
             this.txtAccNo.Name = "txtAccNo";
             this.txtAccNo.Size = new System.Drawing.Size(58, 26);
             this.txtAccNo.TabIndex = 84;

@@ -18,6 +18,7 @@ class glb_function
     internal static string glb_strUserId = "";
     internal static string glb_strUserName = "";
     internal static string glb_strBranchPkid = "";
+    internal static string glb_strBranchName = "";
 
     internal static bool blMsg;
     internal static string glb_iMainCurrId;

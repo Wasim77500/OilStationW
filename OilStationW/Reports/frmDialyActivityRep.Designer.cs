@@ -106,6 +106,7 @@
             this.Controls.Add(this.dtpDialyDate);
             this.Controls.Add(this.label1);
             this.Name = "frmDialyActivityRep";
+            this.Tag = "frmDialyActivityRep";
             this.Text = "التقرير اليومي لرقابة الحركة";
             this.Titel = "التقرير اليومي لرقابة الحركة";
             this.Controls.SetChildIndex(this.label1, 0);

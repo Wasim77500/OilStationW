@@ -47,7 +47,9 @@ namespace OilStationW
 
         private void rbLogout_Click(object sender, EventArgs e)
         {
+            glb_function.strDbCnnString = "";
             glb_function.glb_strUserName = "";
+            
             frmMain_Load(null, null);
         }
 
@@ -59,11 +61,23 @@ namespace OilStationW
             frmLogin myform = new frmLogin();
 
             myform.ShowDialog();
-
+            this.Text = "البرنامج المحاسبي الفرع: " + glb_function.glb_strBranchName;
             if (glb_function.glb_strUserName == "وسيم الأغبري")
             {
                 foreach (RibbonTab ribonTab in tbrStatProp.Tabs)
+                {
                     ribonTab.Visible = true;
+                    foreach (RibbonPanel panl in ribonTab.Panels)
+                    {
+                        panl.Visible = true;
+                        for (int i = 0; i < panl.Items.Count; i++)
+                        {
+                            panl.Items[i].Visible = true ;
+                        }
+                    }
+                        
+                }
+                   
 
                 return;
             }
@@ -287,6 +301,11 @@ namespace OilStationW
         private void rbDialyActivity_Click(object sender, EventArgs e)
         {
             new Reports.frmDialyActivityRep().ShowDialog();
+        }
+
+        private void rbOtherBranchExp_Click(object sender, EventArgs e)
+        {
+            new Accounts.frmOtherBranchExpenss().ShowDialog();
         }
     }
 }

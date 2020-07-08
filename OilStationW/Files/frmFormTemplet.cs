@@ -259,7 +259,7 @@ namespace OilStationW.Files
                 {
 
 
-                    icheck = cnn.TranDataToDB("insert into FORMs_de values((select ifnull(max(b.pkid),0)+1 from FORMs_de b)," + txtPkid.Text + ",'" + dgvProperities[clmFieldType.Index, i].Value.ToString()  + "','" + dgvProperities[clmFieldNameEn.Index, i].Value.ToString()  + "','" + dgvProperities[clmFieldNameAr.Index, i].Value.ToString()  + "'," + dgvProperities[clmListTypeId.Index, i].Value.ToString()  + ",'" + dgvProperities[clmFreeList.Index, i].Value.ToString()  + "','" + dgvProperities[clmNote.Index, i].Value.ToString() + "')");
+                    icheck = cnn.TranDataToDB("insert into FORMs_de values((select ifnull(max(b.pkid),0)+1 from FORMs_de b)," + txtPkid.Text + ",'" + dgvProperities[clmFieldType.Index, i].Value.ToString()  + "','" + dgvProperities[clmFieldNameEn.Index, i].Value.ToString()  + "','" + dgvProperities[clmFieldNameAr.Index, i].Value.ToString()  + "'," + (dgvProperities[clmListTypeId.Index, i].Value.ToString()==""?"null": dgvProperities[clmListTypeId.Index, i].Value.ToString())  + ",'" + dgvProperities[clmFreeList.Index, i].Value.ToString()  + "','" + dgvProperities[clmNote.Index, i].Value.ToString() + "')");
 
                     if (icheck <= 0)
                     {
