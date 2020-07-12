@@ -335,12 +335,12 @@ namespace OilStationW.Accounts
 
 
             ConnectionToMySQL cnn = new ConnectionToMySQL();
-            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند قبض') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max(trans_id),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند قبض') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid,(select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JourNo");
             txtPkid.Text = dtKeys.Rows[0]["pkid"].ToString();
 
             string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
-
-            txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + txtPkid.Text;
+            //JourNo
+            txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JourNo"].ToString();
 
             int icheck = 0;
 

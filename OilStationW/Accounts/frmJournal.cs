@@ -440,12 +440,12 @@ namespace OilStationW.Accounts
 
 
             ConnectionToMySQL cnn = new ConnectionToMySQL();
-            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند قيد') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max(trans_id),0)+1  FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند قيد') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid, (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JounNo");
             txtPkid.Text = dtKeys.Rows[0]["pkid"].ToString();
-
+            //JounNo
             string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
 
-            txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + txtPkid.Text;
+            txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JounNo"].ToString();
 
             int icheck = 0;
 

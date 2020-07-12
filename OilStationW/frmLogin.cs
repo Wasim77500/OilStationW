@@ -55,13 +55,13 @@ namespace OilStationW
             if (lstBranches.SelectedValue.ToString()=="0")
             {
                 glb_function.strDbCnnString =  "server=192.168.1.7;port=3306;charset=utf8;database=headoffice2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-               // glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+              //  glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
                 
             }
             else if(lstBranches.SelectedValue.ToString() == "1")
             {
-                glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-               // glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=alobur2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+               glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+             //  glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=alobur2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
             }
             ConnectionToMySQL.glb_cnn = new MySqlConnection(glb_function.strDbCnnString);
             ConnectionToMySQL cnn = new ConnectionToMySQL();
