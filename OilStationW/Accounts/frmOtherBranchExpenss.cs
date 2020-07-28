@@ -127,7 +127,25 @@ namespace OilStationW.Accounts
         }
         private void FillData()
         {
+            ConnectionToMySQL cnn = new ConnectionToMySQL();
+            
+            bLoad = true;
 
+            DataTable dtAcc = cnn.GetDataTable("SELECT pkid,acc_no,acc_name " +
+                       " FROM accounts " +
+                       " where level = 5 and stat='فعال' order by acc_no");
+
+            lstAccNo.DataSource = dtAcc.DefaultView;
+            lstAccNo.ValueMember = "pkid";
+            lstAccNo.DisplayMember = "acc_no";
+
+            lstAccName.DataSource = dtAcc.DefaultView;
+            lstAccName.ValueMember = "pkid";
+            lstAccName.DisplayMember = "acc_name";
+
+            lstAccNo.SelectedIndex = -1;
+            lstAccName.SelectedIndex = -1;
+            bLoad = false;
         }
         private void PrepareForm()
         {
@@ -218,7 +236,20 @@ namespace OilStationW.Accounts
             DataGridViewCell abc = dgvJourDetails.CurrentCell;
             Rectangle RECT = dgvJourDetails.GetCellDisplayRectangle(abc.ColumnIndex, abc.RowIndex, true);
             // dgvJourDetails.RightToLeft = RightToLeft.Yes;
+            if (e.ColumnIndex == clmAccNo.Index)
+            {
+                lstAccNo.W_ColumnName = e.ColumnIndex.ToString();
 
+                lstAccNo.Tag = e.RowIndex.ToString();
+                if (dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString() == "")
+                    lstAccNo.SelectedIndex = -1;
+                else
+                    lstAccNo.SelectedValue = dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString();
+
+                CtlLocation(RECT, lstAccNo);
+
+                return;
+            }
 
             nmbEditor.W_ColumnName = e.ColumnIndex.ToString();
             nmbEditor.DecimalPlaces = glb_function.glb_iMainCurrDecimal;
@@ -271,6 +302,15 @@ namespace OilStationW.Accounts
 
 
 
+            }
+            else if (e.ColumnIndex == clmJourNote.Index)
+            {
+                frmTextDetail frm = new frmTextDetail();
+                frm.txtDetails.Text = dgvJourDetails.CurrentCell.Value.ToString();
+                frm.ShowDialog();
+                dgvJourDetails.CurrentCell.Value = frm.txtDetails.Text;
+                SendKeys.Send("{TAB}");
+                return;
             }
             GetTotal();
         }
@@ -345,12 +385,12 @@ namespace OilStationW.Accounts
 
 
             ConnectionToMySQL cnn = new ConnectionToMySQL();
-            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند صرف') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max(trans_id),0)+1  FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند صرف') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid,(select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JounNo");
             txtPkid.Text = dtKeys.Rows[0]["pkid"].ToString();
 
             string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
-
-            txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + txtPkid.Text;
+            //JounNo
+            txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JounNo"].ToString();
 
             int icheck = 0;
 
@@ -431,27 +471,27 @@ namespace OilStationW.Accounts
 
 
             ConnectionToHeadOffice cnnH = new ConnectionToHeadOffice();
-            DataTable dtKeysH = cnnH.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='سند صرف') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+            DataTable dtKeysH = cnnH.GetDataTable("select (select  ifnull(max(trans_id),0)+1 FROM journal_header where Branch_id=0 and trans_name='سند صرف') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid,(select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=0 ) JounNo");
             txtPkidH.Text = dtKeysH.Rows[0]["pkid"].ToString();
 
             string strIssueNoH = dtKeysH.Rows[0]["IssueNo"].ToString();
-
-            txtOfficeJourNo.Text =  "0-" + txtPkidH.Text;
+            //JounNo
+            txtOfficeJourNo.Text =  "0-" + dtKeysH.Rows[0]["JounNo"].ToString();
 
              icheck = 0;
 
             icheck = cnnH.TranDataToDB("insert into journal_header values (" + txtPkidH.Text +
                 ",'فعال'" +
                 ",sysdate()" +
-                ",1"  +
+                ","  +glb_function.glb_strUserId+
                 ",0" +
-                ",'" + txtJourNo.Text.Trim() + "'" +
+                ",'" + txtOfficeJourNo.Text.Trim() + "'" +
                 ",'سند صرف'" +
-                "," + strIssueNo +
+                "," + strIssueNoH +
                 ",str_to_date('" + dtpJourDate.Value.ToString("dd/MM/yyyy") + "','%d/%m/%Y')" +
                 ",'" + txtHeaderNote.Text.Trim() + "'" +
                 ",'" + txtPerson.Text.Trim() + "'" +
-                 ",'0-" + strIssueNo + "'" +
+                 ",'0-" + strIssueNoH + "'" +
                 ")");
             if (icheck <= 0)
             {
@@ -653,7 +693,7 @@ namespace OilStationW.Accounts
 
             ConnectionToMySQL cnn = new ConnectionToMySQL();
             dtReport = cnn.GetDataTable("select h.pkid,h.jour_no,h.trans_name,date_format(h.jour_date,'%d/%m/%Y') jour_date,h.jour_note, a.Acc_no,a.acc_name, " +
-                   " if (d.main_value > 0,d.main_value,0) Dept,if (d.main_value < 0,d.main_value * -1,0) Credit,d.jour_details " +
+                   " if (d.main_value > 0,d.main_value,0) Dept,if (d.main_value < 0,d.main_value * -1,0) Credit,d.jour_details,trans_no " +
                            " from journal_header h " +
                           "  join journal_details d on(h.pkid= d.header_id) " +
                           "  join accounts a on(a.pkid= d.acc_id)  " +
@@ -689,9 +729,9 @@ namespace OilStationW.Accounts
 
         class ConnectionToHeadOffice
         {
-            public MySqlConnection HeadOfficeConn = new MySqlConnection("server=192.168.1.7;port=3306;charset=utf8;database=headoffice2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True");
-           // public MySqlConnection HeadOfficeConn = new MySqlConnection("server=localhost;port=3300;charset=utf8;database=headoffice2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True");
-             MySqlCommand comm;
+            public MySqlConnection HeadOfficeConn = new MySqlConnection("server=192.168.1.7;port=3306;charset=utf8;database=headoffice"+ glb_function.glb_Year + ";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True");
+            // public MySqlConnection HeadOfficeConn = new MySqlConnection("server=localhost;port=3300;charset=utf8;database=headoffice"+ glb_function.glb_Year + ";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True");
+            MySqlCommand comm;
              MySqlTransaction trns;
              bool isTrns = false;
             public DataTable GetDataTable(string SqlSt)
@@ -790,6 +830,54 @@ namespace OilStationW.Accounts
             }
 
 
+        }
+
+        private void lstAccNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myList lstParent = sender as myList;
+
+            if (lstParent.SelectedValue == null || bLoad == true)
+                return;
+
+
+
+            if (lstParent.SelectedValue.ToString() != "System.Data.DataRowView" && lstParent.SelectedValue.ToString() != "")
+            {
+                lstAccNo.SelectedValue = lstAccName.SelectedValue = lstParent.SelectedValue;
+            }
+        }
+
+        private void lstAccNo_Leave(object sender, EventArgs e)
+        {
+            if (lstAccNo.Visible == true)
+            {
+                lstAccNo.Visible = false;
+                if (lstAccNo.SelectedIndex == -1)
+                {
+                    dgvJourDetails[Convert.ToUInt16(lstAccNo.W_ColumnName), Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+                    dgvJourDetails[clmAccId.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+                    dgvJourDetails[clmAccName.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+
+                }
+                else
+                {
+                    dgvJourDetails[Convert.ToUInt16(lstAccNo.W_ColumnName), Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccNo.Text;
+                    dgvJourDetails[clmAccId.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccNo.SelectedValue.ToString();
+                    dgvJourDetails[clmAccName.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccName.Text;
+                }
+
+
+
+
+
+                GetTotal();
+            }
+        }
+
+        private void lstAccNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                SendKeys.Send("{TAB}");
         }
     }
 }

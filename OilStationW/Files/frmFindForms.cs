@@ -65,7 +65,7 @@ namespace OilStationW.Files
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-
+            GetFormData();
         }
     }
 }

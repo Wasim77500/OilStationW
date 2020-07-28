@@ -61,6 +61,10 @@
             this.nmbExchangeRate = new myNumber();
             this.nmbEditor = new myNumber();
             this.btnSave = new MainButton();
+            this.btnClosingEntry = new MainButton();
+            this.btnGetBegningEntry = new MainButton();
+            this.lstAccName = new myList();
+            this.lstAccNo = new myList();
             this.myGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJourDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmbExchangeRate)).BeginInit();
@@ -197,6 +201,7 @@
             this.dgvJourDetails.AllowUserToAddRows = false;
             this.dgvJourDetails.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(182)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F);
             this.dgvJourDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvJourDetails.BackgroundColor = System.Drawing.Color.FloralWhite;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -223,7 +228,9 @@
             this.dgvJourDetails.Name = "dgvJourDetails";
             this.dgvJourDetails.RowHeadersVisible = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(221)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F);
             this.dgvJourDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvJourDetails.RowTemplate.Height = 26;
             this.dgvJourDetails.Size = new System.Drawing.Size(795, 329);
             this.dgvJourDetails.TabIndex = 63;
             this.dgvJourDetails.W_ClmName = "";
@@ -285,7 +292,7 @@
             // 
             // clmJourNote
             // 
-            this.clmJourNote.HeaderText = "ملاحظات";
+            this.clmJourNote.HeaderText = "البيان";
             this.clmJourNote.Name = "clmJourNote";
             // 
             // clmDelete
@@ -377,9 +384,9 @@
             this.txtDeptTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDeptTotal.Enabled = false;
             this.txtDeptTotal.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtDeptTotal.Location = new System.Drawing.Point(685, 460);
+            this.txtDeptTotal.Location = new System.Drawing.Point(648, 460);
             this.txtDeptTotal.Name = "txtDeptTotal";
-            this.txtDeptTotal.Size = new System.Drawing.Size(113, 26);
+            this.txtDeptTotal.Size = new System.Drawing.Size(150, 26);
             this.txtDeptTotal.TabIndex = 63;
             this.txtDeptTotal.W_ColumnName = "";
             this.txtDeptTotal.W_OldValue = "";
@@ -390,9 +397,9 @@
             this.txtCreditTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCreditTotal.Enabled = false;
             this.txtCreditTotal.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtCreditTotal.Location = new System.Drawing.Point(571, 460);
+            this.txtCreditTotal.Location = new System.Drawing.Point(496, 460);
             this.txtCreditTotal.Name = "txtCreditTotal";
-            this.txtCreditTotal.Size = new System.Drawing.Size(113, 26);
+            this.txtCreditTotal.Size = new System.Drawing.Size(150, 26);
             this.txtCreditTotal.TabIndex = 73;
             this.txtCreditTotal.W_ColumnName = "";
             this.txtCreditTotal.W_OldValue = "";
@@ -403,9 +410,9 @@
             this.txtDiff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiff.Enabled = false;
             this.txtDiff.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtDiff.Location = new System.Drawing.Point(571, 487);
+            this.txtDiff.Location = new System.Drawing.Point(496, 487);
             this.txtDiff.Name = "txtDiff";
-            this.txtDiff.Size = new System.Drawing.Size(227, 26);
+            this.txtDiff.Size = new System.Drawing.Size(302, 26);
             this.txtDiff.TabIndex = 74;
             this.txtDiff.W_ColumnName = "";
             this.txtDiff.W_OldValue = "";
@@ -445,7 +452,7 @@
             // nmbEditor
             // 
             this.nmbEditor.DecimalPlaces = 2;
-            this.nmbEditor.Font = new System.Drawing.Font("Arial", 10F);
+            this.nmbEditor.Font = new System.Drawing.Font("Arial", 12F);
             this.nmbEditor.Location = new System.Drawing.Point(687, 80);
             this.nmbEditor.Maximum = new decimal(new int[] {
             1215752191,
@@ -453,7 +460,7 @@
             0,
             0});
             this.nmbEditor.Name = "nmbEditor";
-            this.nmbEditor.Size = new System.Drawing.Size(100, 23);
+            this.nmbEditor.Size = new System.Drawing.Size(100, 26);
             this.nmbEditor.TabIndex = 79;
             this.nmbEditor.ThousandsSeparator = true;
             this.nmbEditor.Visible = false;
@@ -482,10 +489,88 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnClosingEntry
+            // 
+            this.btnClosingEntry.BackColor = System.Drawing.Color.Black;
+            this.btnClosingEntry.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClosingEntry.FlatAppearance.BorderColor = System.Drawing.Color.Chocolate;
+            this.btnClosingEntry.FlatAppearance.BorderSize = 2;
+            this.btnClosingEntry.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SandyBrown;
+            this.btnClosingEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.btnClosingEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClosingEntry.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btnClosingEntry.ForeColor = System.Drawing.Color.Chocolate;
+            this.btnClosingEntry.Location = new System.Drawing.Point(8, 45);
+            this.btnClosingEntry.Name = "btnClosingEntry";
+            this.btnClosingEntry.Size = new System.Drawing.Size(105, 35);
+            this.btnClosingEntry.TabIndex = 81;
+            this.btnClosingEntry.Text = "الاقفال";
+            this.btnClosingEntry.UseVisualStyleBackColor = false;
+            this.btnClosingEntry.Click += new System.EventHandler(this.btnClosingEntry_Click);
+            // 
+            // btnGetBegningEntry
+            // 
+            this.btnGetBegningEntry.BackColor = System.Drawing.Color.Black;
+            this.btnGetBegningEntry.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGetBegningEntry.FlatAppearance.BorderColor = System.Drawing.Color.Chocolate;
+            this.btnGetBegningEntry.FlatAppearance.BorderSize = 2;
+            this.btnGetBegningEntry.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SandyBrown;
+            this.btnGetBegningEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Chocolate;
+            this.btnGetBegningEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetBegningEntry.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.btnGetBegningEntry.ForeColor = System.Drawing.Color.Chocolate;
+            this.btnGetBegningEntry.Location = new System.Drawing.Point(687, 43);
+            this.btnGetBegningEntry.Name = "btnGetBegningEntry";
+            this.btnGetBegningEntry.Size = new System.Drawing.Size(107, 35);
+            this.btnGetBegningEntry.TabIndex = 82;
+            this.btnGetBegningEntry.Text = "استحضار";
+            this.btnGetBegningEntry.UseVisualStyleBackColor = false;
+            this.btnGetBegningEntry.Click += new System.EventHandler(this.btnGetBegningEntry_Click);
+            // 
+            // lstAccName
+            // 
+            this.lstAccName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.lstAccName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.lstAccName.Font = new System.Drawing.Font("Arial", 12F);
+            this.lstAccName.FormattingEnabled = true;
+            this.lstAccName.Location = new System.Drawing.Point(45, 416);
+            this.lstAccName.Name = "lstAccName";
+            this.lstAccName.Size = new System.Drawing.Size(318, 26);
+            this.lstAccName.TabIndex = 84;
+            this.lstAccName.Visible = false;
+            this.lstAccName.W_ColumnName = "";
+            this.lstAccName.W_OldValue = "";
+            this.lstAccName.w_Tran = myList.Tran.None;
+            this.lstAccName.w_ValueType = myList.ValueType.TEXT;
+            this.lstAccName.SelectedIndexChanged += new System.EventHandler(this.lstAccNo_SelectedIndexChanged);
+            // 
+            // lstAccNo
+            // 
+            this.lstAccNo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.lstAccNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.lstAccNo.Font = new System.Drawing.Font("Arial", 12F);
+            this.lstAccNo.FormattingEnabled = true;
+            this.lstAccNo.Location = new System.Drawing.Point(364, 416);
+            this.lstAccNo.Name = "lstAccNo";
+            this.lstAccNo.Size = new System.Drawing.Size(155, 26);
+            this.lstAccNo.TabIndex = 83;
+            this.lstAccNo.Visible = false;
+            this.lstAccNo.W_ColumnName = "";
+            this.lstAccNo.W_OldValue = "";
+            this.lstAccNo.w_Tran = myList.Tran.None;
+            this.lstAccNo.w_ValueType = myList.ValueType.TEXT;
+            this.lstAccNo.SelectedIndexChanged += new System.EventHandler(this.lstAccNo_SelectedIndexChanged);
+            this.lstAccNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstAccNo_KeyDown);
+            this.lstAccNo.Leave += new System.EventHandler(this.lstAccNo_Leave);
+            // 
             // frmBeginingEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(801, 520);
+            this.Controls.Add(this.lstAccName);
+            this.Controls.Add(this.lstAccNo);
+            this.Controls.Add(this.btnGetBegningEntry);
+            this.Controls.Add(this.btnClosingEntry);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.nmbEditor);
             this.Controls.Add(this.nmbExchangeRate);
@@ -517,6 +602,10 @@
             this.Controls.SetChildIndex(this.nmbExchangeRate, 0);
             this.Controls.SetChildIndex(this.nmbEditor, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.btnClosingEntry, 0);
+            this.Controls.SetChildIndex(this.btnGetBegningEntry, 0);
+            this.Controls.SetChildIndex(this.lstAccNo, 0);
+            this.Controls.SetChildIndex(this.lstAccName, 0);
             this.myGroupBox1.ResumeLayout(false);
             this.myGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJourDetails)).EndInit();
@@ -548,6 +637,8 @@
         private myText txtPkid;
         private myText txtBranchId;
         private myNumber nmbExchangeRate;
+        private myNumber nmbEditor;
+        private MainButton btnSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPKid;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccNo;
@@ -557,7 +648,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJourNote;
         private System.Windows.Forms.DataGridViewImageColumn clmDelete;
-        private myNumber nmbEditor;
-        private MainButton btnSave;
+        private MainButton btnClosingEntry;
+        private MainButton btnGetBegningEntry;
+        private myList lstAccName;
+        private myList lstAccNo;
     }
 }

@@ -218,6 +218,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label10);
             this.Name = "frmFreeList";
+            this.Text = "تعريف القوائم";
+            this.Titel = "تعريف القوائم";
             this.Load += new System.EventHandler(this.frmFreeList_Load);
             this.Controls.SetChildIndex(this.label10, 0);
             this.Controls.SetChildIndex(this.label1, 0);

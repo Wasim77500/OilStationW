@@ -308,12 +308,12 @@ namespace OilStationW.Sales
             #region AccountEntry
             //القيد المحاسبي *********************
             //حفظ بيانات الراس
-            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='فاتورة بيع') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+            DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JourNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
             string strJPkid = dtKeys.Rows[0]["pkid"].ToString();
 
-            //  string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
+            //  string strIssueNo = dtKeys.Rows[0]["JourNo"].ToString();
 
-            string strJourNo = glb_function.glb_strBranchPkid + "-" + strJPkid;
+            string strJourNo = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JourNo"].ToString();
 
             icheck = 0;
 

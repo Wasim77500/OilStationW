@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpFrom = new myDate();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtJourNo = new myText();
             this.gbDate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btnClose.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnClose.Location = new System.Drawing.Point(108, 172);
+            this.btnClose.Location = new System.Drawing.Point(108, 216);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 35);
             this.btnClose.TabIndex = 84;
@@ -70,7 +72,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btnPrint.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnPrint.Location = new System.Drawing.Point(184, 172);
+            this.btnPrint.Location = new System.Drawing.Point(184, 216);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 35);
             this.btnPrint.TabIndex = 83;
@@ -83,7 +85,7 @@
             this.ckbPosting.AutoSize = true;
             this.ckbPosting.Font = new System.Drawing.Font("Arial", 14F);
             this.ckbPosting.ForeColor = System.Drawing.Color.Chocolate;
-            this.ckbPosting.Location = new System.Drawing.Point(156, 135);
+            this.ckbPosting.Location = new System.Drawing.Point(86, 174);
             this.ckbPosting.Name = "ckbPosting";
             this.ckbPosting.Size = new System.Drawing.Size(185, 26);
             this.ckbPosting.TabIndex = 82;
@@ -173,10 +175,35 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "من تاريخ";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(279, 143);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 18);
+            this.label3.TabIndex = 85;
+            this.label3.Text = "رقم القيد";
+            // 
+            // txtJourNo
+            // 
+            this.txtJourNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtJourNo.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtJourNo.Location = new System.Drawing.Point(108, 135);
+            this.txtJourNo.Name = "txtJourNo";
+            this.txtJourNo.Size = new System.Drawing.Size(163, 26);
+            this.txtJourNo.TabIndex = 86;
+            this.txtJourNo.W_ColumnName = "";
+            this.txtJourNo.W_OldValue = "";
+            this.txtJourNo.w_Tran = myText.Tran.None;
+            // 
             // frmJournalsRep
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(368, 222);
+            this.ClientSize = new System.Drawing.Size(368, 263);
+            this.Controls.Add(this.txtJourNo);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.ckbPosting);
@@ -191,6 +218,8 @@
             this.Controls.SetChildIndex(this.ckbPosting, 0);
             this.Controls.SetChildIndex(this.btnPrint, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.txtJourNo, 0);
             this.gbDate.ResumeLayout(false);
             this.gbDate.PerformLayout();
             this.ResumeLayout(false);
@@ -209,5 +238,7 @@
         private System.Windows.Forms.Label label2;
         private myDate dtpFrom;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private myText txtJourNo;
     }
 }

@@ -44,6 +44,11 @@ namespace OilStationW.Reports
             else
                 strStat = " and h.stat in ( 'مرحل')";
 
+            if(txtJourNo.Text.Trim()!="")
+            {
+                strStat += " and jour_no='"+txtJourNo.Text.Trim()+"'";
+            }
+
             if (ckbSelectDate.Checked == true)
             {
 

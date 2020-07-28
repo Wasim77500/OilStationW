@@ -33,11 +33,6 @@ namespace OilStationW.Accounts
             for (int i = 0; i < dtJournal.Rows.Count; i++)
             {
 
-               
-
-               
-
-
                 dgvJournalData.Rows.Add();
                 dgvJournalData[clmName.Index,i].Value = dtJournal.Rows[i]["name"].ToString();
 

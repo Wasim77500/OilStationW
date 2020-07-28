@@ -201,4 +201,6 @@ D:\OilStationW\OilStationW\obj\Debug\OilStationW.pdb
 D:\OilStationW\OilStationW\obj\Debug\OilStationW.csprojAssemblyReference.cache
 C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.Form1.resources
 C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.Accounts.frmOtherBranchExpenss.resources
+C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.Accounts.frmClosingEntry.resources
+C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.frmTextDetail.resources
 C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.csprojAssemblyReference.cache

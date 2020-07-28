@@ -45,18 +45,30 @@ namespace OilStationW.Reports
             else
                 strStat = " and h.stat in ( 'مرحل')";
 
+            if(ckbClosingEntry.Checked ==false )
+            {
+                strStat += " and h.trans_name!='سند اقفال'";
+            }
+
             if (ckbSelectDate.Checked == true)
             {
 
-                strDate = " and jour_date between str_to_date('" + dtpFrom.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpTo.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y')";
+                strDate = " and h.trans_name!='قيد افتتاحي' and jour_date between str_to_date('" + dtpFrom.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpTo.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y')";
+                
+                if(dtpFrom.Value.ToString("dd/MM")== "01/01"  )
+                    strPrevDate = " and h.trans_name='قيد افتتاحي'";
+                else
                 strPrevDate = " and jour_date between str_to_date('01/01/" + dtpFrom.Value.ToString("yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpFrom.Value.AddDays(-1).ToString("dd/MM/yyyy") + "', '%d/%m/%Y')";
 
             }
 
             if(strPrevDate=="")
             {
-                strPrevDate = " and jour_date between str_to_date('01/01/1999', '%d/%m/%Y') and str_to_date('02/01/1999', '%d/%m/%Y')";
+                //  strPrevDate = " and jour_date between str_to_date('01/01/1999', '%d/%m/%Y') and str_to_date('02/01/1999', '%d/%m/%Y')";
+                strDate = " and h.trans_name!='قيد افتتاحي'";
+                strPrevDate = " and h.trans_name='قيد افتتاحي'";
             }
+           
             dtReport.Clear();
 
             dtReport = cnn.GetDataTable("SELECT Acc_no,acc_name ," +
@@ -125,7 +137,7 @@ namespace OilStationW.Reports
 
 
 
-                if (dDept == 0 && dCredit == 0 && Convert.ToDouble(dtReport.Rows[i]["Prevdept"].ToString())==0 && Convert.ToDouble(dtReport.Rows[i]["Prevcredit"].ToString())==0)
+                if (dDept - dCredit== 0 && Convert.ToDouble(dtReport.Rows[i]["Prevdept"].ToString())==0 && Convert.ToDouble(dtReport.Rows[i]["Prevcredit"].ToString())==0)
                 {
                     dtReport.Rows.Remove(dtReport.Rows[i]);
                     i--;

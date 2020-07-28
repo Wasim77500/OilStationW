@@ -23,9 +23,41 @@ namespace OilStationW.Accounts
 
             PrepareForm();
         }
+
+        private void FillData()
+        {
+            ConnectionToMySQL cnn = new ConnectionToMySQL();
+            //DataTable dtCurr = cnn.GetDataTable("SELECT pkid,curr_name FROM currency order by pkid");
+            //lstCurrency.ItemsSource = dtCurr.DefaultView;
+            //lstCurrency.SelectedValuePath = "pkid";
+            //lstCurrency.DisplayMemberPath = "curr_name";
+            //lstCurrency.SelectedIndex = 0;
+
+
+
+
+            bLoad = true;
+
+            DataTable dtAcc = cnn.GetDataTable("SELECT pkid,acc_no,acc_name " +
+                       " FROM accounts " +
+                       " where level = 5 and stat='فعال' order by acc_no");
+
+            lstAccNo.DataSource = dtAcc.DefaultView;
+            lstAccNo.ValueMember = "pkid";
+            lstAccNo.DisplayMember = "acc_no";
+
+            lstAccName.DataSource = dtAcc.DefaultView;
+            lstAccName.ValueMember = "pkid";
+            lstAccName.DisplayMember = "acc_name";
+
+            lstAccNo.SelectedIndex = -1;
+            lstAccName.SelectedIndex = -1;
+            bLoad = false;
+        }
+
         private void PrepareForm()
         {
-           
+            FillData();
             //nmbCredit.FormatString = "N" + glb_function.glb_iMainCurrDecimal.ToString();
             //nmbDept.FormatString = "N" + glb_function.glb_iMainCurrDecimal.ToString();
             txtCreditTotal.Text = "0";
@@ -219,7 +251,20 @@ namespace OilStationW.Accounts
             DataGridViewCell abc = dgvJourDetails.CurrentCell;
             Rectangle RECT = dgvJourDetails.GetCellDisplayRectangle(abc.ColumnIndex, abc.RowIndex, true);
             // dgvJourDetails.RightToLeft = RightToLeft.Yes;
+            if (e.ColumnIndex == clmAccNo.Index)
+            {
+                lstAccNo.W_ColumnName = e.ColumnIndex.ToString();
 
+                lstAccNo.Tag = e.RowIndex.ToString();
+                if (dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString() == "")
+                    lstAccNo.SelectedIndex = -1;
+                else
+                    lstAccNo.SelectedValue = dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString();
+
+                CtlLocation(RECT, lstAccNo);
+
+                return;
+            }
 
             nmbEditor.W_ColumnName = e.ColumnIndex.ToString();
             // nmbEditor.DecimalPlaces = nmbUNIT_PRICE.DecimalPlaces;
@@ -282,6 +327,15 @@ namespace OilStationW.Accounts
 
 
 
+            }
+            else if (e.ColumnIndex == clmJourNote.Index)
+            {
+                frmTextDetail frm = new frmTextDetail();
+                frm.txtDetails.Text = dgvJourDetails.CurrentCell.Value.ToString();
+                frm.ShowDialog();
+                dgvJourDetails.CurrentCell.Value = frm.txtDetails.Text;
+                SendKeys.Send("{TAB}");
+                return;
             }
 
             GetTotal();
@@ -526,7 +580,7 @@ namespace OilStationW.Accounts
             cryRepVoucher report = new cryRepVoucher();
             frmReportContainer frm = new frmReportContainer();
             DataTable dtReport = new DataTable();
-
+           
             ConnectionToMySQL cnn = new ConnectionToMySQL();
             dtReport = cnn.GetDataTable("select h.pkid,h.jour_no,h.trans_name,date_format(h.jour_date,'%d/%m/%Y') jour_date,h.jour_note, a.Acc_no,a.acc_name, " +
                    " if (d.main_value > 0,d.main_value,0) Dept,if (d.main_value < 0,d.main_value * -1,0) Credit,d.jour_details " +
@@ -561,6 +615,54 @@ namespace OilStationW.Accounts
             dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value = "0";
             dgvJourDetails[clmProfitCenter.Index, dgvJourDetails.Rows.Count - 1].Value = "";
             dgvJourDetails[clmJourNote.Index, dgvJourDetails.Rows.Count - 1].Value = "";
+        }
+
+        private void lstAccNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myList lstParent = sender as myList;
+
+            if (lstParent.SelectedValue == null || bLoad == true)
+                return;
+
+
+
+            if (lstParent.SelectedValue.ToString() != "System.Data.DataRowView" && lstParent.SelectedValue.ToString() != "")
+            {
+                lstAccNo.SelectedValue = lstAccName.SelectedValue = lstParent.SelectedValue;
+            }
+        }
+
+        private void lstAccNo_Leave(object sender, EventArgs e)
+        {
+            if (lstAccNo.Visible == true)
+            {
+                lstAccNo.Visible = false;
+                if (lstAccNo.SelectedIndex == -1)
+                {
+                    dgvJourDetails[Convert.ToUInt16(lstAccNo.W_ColumnName), Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+                    dgvJourDetails[clmAccId.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+                    dgvJourDetails[clmAccName.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+
+                }
+                else
+                {
+                    dgvJourDetails[Convert.ToUInt16(lstAccNo.W_ColumnName), Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccNo.Text;
+                    dgvJourDetails[clmAccId.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccNo.SelectedValue.ToString();
+                    dgvJourDetails[clmAccName.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccName.Text;
+                }
+
+
+
+
+
+                GetTotal();
+            }
+        }
+
+        private void lstAccNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                SendKeys.Send("{TAB}");
         }
     }
 }

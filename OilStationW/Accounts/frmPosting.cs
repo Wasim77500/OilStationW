@@ -37,7 +37,7 @@ namespace OilStationW.Accounts
                 strCheckDate = strCheckDate + " and jour_no='" + txtOperationNo.Text.Trim() + "'";
 
             ConnectionToMySQL cnn = new ConnectionToMySQL();
-            DataTable dtUnPosting = cnn.GetDataTable("SELECT h.PKID,h.trans_name,h.jour_no,date_format(jour_date,'%d/%m/%Y') jour_date " +
+            DataTable dtUnPosting = cnn.GetDataTable("SELECT h.PKID,h.trans_name,TRANS_NO,h.jour_no,date_format(jour_date,'%d/%m/%Y') jour_date " +
                                    " FROM journal_header h " +
                                     " where h.stat = 'فعال' " + strCheckDate);
 
@@ -47,7 +47,7 @@ namespace OilStationW.Accounts
                 dgvEntries.Rows.Add();
              
               dgvEntries[clmPKid.Index,i].Value = dtUnPosting.Rows[i]["pkid"].ToString();
-                dgvEntries[clmJurNo.Index, i].Value = dtUnPosting.Rows[i]["jour_no"].ToString();
+                dgvEntries[clmJurNo.Index, i].Value = dtUnPosting.Rows[i]["TRANS_NO"].ToString();
                 dgvEntries[clmJurType.Index, i].Value = dtUnPosting.Rows[i]["trans_name"].ToString();
                 dgvEntries[clmJurDate.Index, i].Value = dtUnPosting.Rows[i]["jour_date"].ToString();
 

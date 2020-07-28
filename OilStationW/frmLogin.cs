@@ -51,17 +51,27 @@ namespace OilStationW
         {
             if (!CheckEntries())
                 return;
-         
+
+            glb_function.glb_Year = nmbYear.Value.ToString();
             if (lstBranches.SelectedValue.ToString()=="0")
             {
-                glb_function.strDbCnnString =  "server=192.168.1.7;port=3306;charset=utf8;database=headoffice2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-              //  glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
-                
+                  // glb_function.strDbCnnString =  "server=192.168.1.7;port=3306;charset=utf8;database=headoffice"+nmbYear.Value.ToString()+";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice"+nmbYear.Value.ToString()+";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.glb_DB_Name = "headoffice";
             }
             else if(lstBranches.SelectedValue.ToString() == "1")
             {
-               glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur2020;userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-             //  glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=alobur2020;userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+               //glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=alobur" + nmbYear.Value.ToString() + ";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+                 glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=alobur"+nmbYear.Value.ToString()+";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.glb_DB_Name = "alobur";
+            }
+            else if (lstBranches.SelectedValue.ToString() == "100")
+            {
+                //  glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=ammar"+nmbYear.Value.ToString()+";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=ammar" + nmbYear.Value.ToString() + ";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.glb_DB_Name = "ammar";
+
+
             }
             ConnectionToMySQL.glb_cnn = new MySqlConnection(glb_function.strDbCnnString);
             ConnectionToMySQL cnn = new ConnectionToMySQL();
@@ -102,14 +112,14 @@ namespace OilStationW
 
             if (txtUsername.Text.Trim() == "")
             {
-                glb_function.MsgBox("الرجاء ادخال اسم المستخدم", "رسالة خطأ");
+                glb_function.MsgBox("الرجاء ادخال اسم المستخدم", "رسالة تنبية");
                 txtUsername.Focus();
                 return false;
             }
 
             if (txtPassword.Text.Trim() == "")
             {
-                glb_function.MsgBox("الرجاء ادخال كلمة السر", "رسالة خطأ");
+                glb_function.MsgBox("الرجاء ادخال كلمة السر", "رسالة تنبية");
                 txtPassword.Focus();
                 return false;
             }
@@ -140,6 +150,12 @@ namespace OilStationW
             lst.Add(newRow);
 
 
+            newRow = new Branches();
+            newRow.strBranchNo = "100";
+            newRow.strBranchName = "الأدارة الخارجية";
+            // newRow.strBranchName = "alobur" + DateTime.Today.ToString("yyyy");
+            lst.Add(newRow);
+
 
 
             lstBranches.DataSource = lst;
@@ -149,9 +165,14 @@ namespace OilStationW
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            
+            nmbYear.Value = DateTime.Now.Year;
             
            FillBranches();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

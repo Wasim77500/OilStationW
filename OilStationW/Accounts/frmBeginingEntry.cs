@@ -51,7 +51,7 @@ namespace OilStationW.Accounts
         }
         private void FillData()
         {
-            //ConnectionToMySQL cnn = new ConnectionToMySQL();
+            ConnectionToMySQL cnn = new ConnectionToMySQL();
             //DataTable dtCurr = cnn.GetDataTable("SELECT pkid,curr_name FROM currency order by pkid");
             //lstCurrency.ItemsSource = dtCurr.DefaultView;
             //lstCurrency.SelectedValuePath = "pkid";
@@ -61,16 +61,23 @@ namespace OilStationW.Accounts
 
 
 
-            //DataTable dtAcc = cnn.GetDataTable("SELECT pkid,acc_no,acc_name FROM accounts where level=5 and stat='فعال' order by acc_no");
-            //lstAccNo.ItemsSource = dtAcc.DefaultView;
-            //lstAccNo.SelectedValuePath = "pkid";
-            //lstAccNo.DisplayMemberPath = "acc_no";
+            bLoad = true;
+            
+            DataTable dtAcc = cnn.GetDataTable("SELECT pkid,acc_no,acc_name " +
+                       " FROM accounts " +
+                       " where level = 5 and stat='فعال' order by acc_no");
 
-            //lstAccName.ItemsSource = dtAcc.DefaultView;
-            //lstAccName.SelectedValuePath = "pkid";
-            //lstAccName.DisplayMemberPath = "acc_name";
-            //lstAccNo.SelectedIndex = -1;
-            //lstAccName.SelectedIndex = -1;
+            lstAccNo.DataSource = dtAcc.DefaultView;
+            lstAccNo.ValueMember = "pkid";
+            lstAccNo.DisplayMember = "acc_no";
+
+            lstAccName.DataSource = dtAcc.DefaultView;
+            lstAccName.ValueMember = "pkid";
+            lstAccName.DisplayMember = "acc_name";
+
+            lstAccNo.SelectedIndex = -1;
+            lstAccName.SelectedIndex = -1;
+            bLoad = false;
         }
 
         private void dgvJourDetails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +98,15 @@ namespace OilStationW.Accounts
 
 
                 
+            }
+            else if (e.ColumnIndex== clmJourNote.Index)
+            {
+                frmTextDetail frm = new frmTextDetail();
+                frm.txtDetails.Text = dgvJourDetails.CurrentCell.Value.ToString();
+                frm.ShowDialog();
+                dgvJourDetails.CurrentCell.Value = frm.txtDetails.Text;
+                SendKeys.Send("{TAB}");
+                return;
             }
 
             GetTotal();
@@ -163,6 +179,20 @@ namespace OilStationW.Accounts
             Rectangle RECT = dgvJourDetails.GetCellDisplayRectangle(abc.ColumnIndex, abc.RowIndex, true);
            // dgvJourDetails.RightToLeft = RightToLeft.Yes;
 
+           if(e.ColumnIndex == clmAccNo.Index)
+           {
+                lstAccNo.W_ColumnName = e.ColumnIndex.ToString();
+
+                lstAccNo.Tag = e.RowIndex.ToString();
+                if (dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString() == "")
+                    lstAccNo.SelectedIndex = -1;
+                else
+                lstAccNo.SelectedValue = dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString();
+
+                CtlLocation(RECT, lstAccNo);
+
+                return;
+            }
 
             nmbEditor.W_ColumnName = e.ColumnIndex.ToString();
             nmbEditor.DecimalPlaces = glb_function.glb_iMainCurrDecimal;
@@ -400,12 +430,12 @@ namespace OilStationW.Accounts
             int icheck = 0;
             if (dtBiginingEntry == null || dtBiginingEntry.Rows.Count <= 0)
             {
-                DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='قيد افتتاحي') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+                DataTable dtKeys = cnn.GetDataTable("select (select  ifnull(max(trans_id),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='قيد افتتاحي') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid,(select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JourNo");
                 txtPkid.Text = dtKeys.Rows[0]["pkid"].ToString();
 
                 string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
 
-                txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + txtPkid.Text;
+                txtJourNo.Text = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JourNo"].ToString();
 
 
 
@@ -602,6 +632,90 @@ namespace OilStationW.Accounts
             dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value = "0";
             dgvJourDetails[clmProfitCenter.Index, dgvJourDetails.Rows.Count - 1].Value = "";
             dgvJourDetails[clmJourNote.Index, dgvJourDetails.Rows.Count - 1].Value = "";
+        }
+
+        private void btnClosingEntry_Click(object sender, EventArgs e)
+        {
+            new Accounts.frmClosingEntry().ShowDialog();
+        }
+
+        private void btnGetBegningEntry_Click(object sender, EventArgs e)
+        {
+            int iPrivousYear = Convert.ToInt32(glb_function.glb_Year) - 1;
+            string strDB = glb_function.glb_DB_Name + iPrivousYear;
+            dgvJourDetails.Rows.Clear();
+            ConnectionToMySQL cnn = new ConnectionToMySQL();
+            DataTable dtProfitExp = cnn.GetDataTable("SELECT acc_id,a.Acc_no,a.acc_name, sum(main_value),if (sum(main_value) > 0,sum(main_value),0) Dept," +
+                                    " if (sum(main_value) < 0,sum(main_value) * -1,0) Credit" +
+                                   " FROM "+ strDB + ".journal_details d" +
+                                   " join "+ strDB + ".accounts a on(d.acc_id = a.pkid)" +
+                                   " " +
+                                   " group by acc_id" +
+                                    " having sum(main_value) != 0");
+
+
+
+            for (int i = 0; i < dtProfitExp.Rows.Count; i++)
+            {
+                dgvJourDetails.Rows.Add();
+                dgvJourDetails[clmAccId.Index, i].Value = dtProfitExp.Rows[i]["acc_id"].ToString();
+                dgvJourDetails[clmAccNo.Index, i].Value = dtProfitExp.Rows[i]["Acc_no"].ToString();
+                dgvJourDetails[clmAccName.Index, i].Value = dtProfitExp.Rows[i]["acc_name"].ToString();
+                dgvJourDetails[clmDept.Index, i].Value = Convert.ToDecimal(dtProfitExp.Rows[i]["Dept"].ToString()).ToString("###,###,###,##0.##");
+                dgvJourDetails[clmCredit.Index, i].Value = Convert.ToDecimal(dtProfitExp.Rows[i]["Credit"].ToString()).ToString("###,###,###,##0.##");
+                dgvJourDetails[clmJourNote.Index, i].Value = "قيد الافتتاحي لسنة " + glb_function.glb_Year;
+
+            }
+
+            GetTotal();
+        }
+
+        private void lstAccNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myList lstParent = sender as myList;
+
+            if (lstParent.SelectedValue == null || bLoad == true)
+                return;
+
+
+
+            if (lstParent.SelectedValue.ToString() != "System.Data.DataRowView" && lstParent.SelectedValue.ToString() != "")
+            {
+                lstAccNo.SelectedValue = lstAccName.SelectedValue = lstParent.SelectedValue;
+            }
+        }
+
+        private void lstAccNo_Leave(object sender, EventArgs e)
+        {
+            if (lstAccNo.Visible == true)
+            {
+                lstAccNo.Visible = false;
+                if (lstAccNo.SelectedIndex == -1   )
+                {
+                    dgvJourDetails[Convert.ToUInt16(lstAccNo.W_ColumnName), Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+                    dgvJourDetails[clmAccId.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+                    dgvJourDetails[clmAccName.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = "";
+
+                }
+                else
+                {
+                    dgvJourDetails[Convert.ToUInt16(lstAccNo.W_ColumnName), Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccNo.Text;
+                    dgvJourDetails[clmAccId.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccNo.SelectedValue.ToString();
+                    dgvJourDetails[clmAccName.Index, Convert.ToUInt16(lstAccNo.Tag.ToString())].Value = lstAccName.Text ;
+                }
+
+
+               
+
+
+                GetTotal();
+            }
+        }
+
+        private void lstAccNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                SendKeys.Send("{TAB}");
         }
     }
 }

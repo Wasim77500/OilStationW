@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpFrom = new myDate();
             this.label1 = new System.Windows.Forms.Label();
+            this.ckbClosingEntry = new System.Windows.Forms.CheckBox();
             this.gbDate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btnClose.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnClose.Location = new System.Drawing.Point(117, 167);
+            this.btnClose.Location = new System.Drawing.Point(119, 204);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 35);
             this.btnClose.TabIndex = 84;
@@ -70,7 +71,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btnPrint.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnPrint.Location = new System.Drawing.Point(193, 167);
+            this.btnPrint.Location = new System.Drawing.Point(195, 204);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 35);
             this.btnPrint.TabIndex = 83;
@@ -83,7 +84,7 @@
             this.ckbPosting.AutoSize = true;
             this.ckbPosting.Font = new System.Drawing.Font("Arial", 14F);
             this.ckbPosting.ForeColor = System.Drawing.Color.Chocolate;
-            this.ckbPosting.Location = new System.Drawing.Point(169, 135);
+            this.ckbPosting.Location = new System.Drawing.Point(164, 135);
             this.ckbPosting.Name = "ckbPosting";
             this.ckbPosting.Size = new System.Drawing.Size(185, 26);
             this.ckbPosting.TabIndex = 82;
@@ -173,10 +174,23 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "من تاريخ";
             // 
+            // ckbClosingEntry
+            // 
+            this.ckbClosingEntry.AutoSize = true;
+            this.ckbClosingEntry.Font = new System.Drawing.Font("Arial", 14F);
+            this.ckbClosingEntry.ForeColor = System.Drawing.Color.Chocolate;
+            this.ckbClosingEntry.Location = new System.Drawing.Point(213, 164);
+            this.ckbClosingEntry.Name = "ckbClosingEntry";
+            this.ckbClosingEntry.Size = new System.Drawing.Size(136, 26);
+            this.ckbClosingEntry.TabIndex = 85;
+            this.ckbClosingEntry.Text = "تضمين قيد الاقفال";
+            this.ckbClosingEntry.UseVisualStyleBackColor = true;
+            // 
             // frmTrialBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(393, 210);
+            this.ClientSize = new System.Drawing.Size(393, 251);
+            this.Controls.Add(this.ckbClosingEntry);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.ckbPosting);
@@ -191,6 +205,7 @@
             this.Controls.SetChildIndex(this.ckbPosting, 0);
             this.Controls.SetChildIndex(this.btnPrint, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.ckbClosingEntry, 0);
             this.gbDate.ResumeLayout(false);
             this.gbDate.PerformLayout();
             this.ResumeLayout(false);
@@ -209,5 +224,6 @@
         private System.Windows.Forms.Label label2;
         private myDate dtpFrom;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox ckbClosingEntry;
     }
 }

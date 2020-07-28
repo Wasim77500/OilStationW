@@ -27,10 +27,10 @@
     <ProductName>برنامج المحطات</ProductName>
     <PublisherName>شركة الفرات</PublisherName>
     <SuiteName>شركة الفرات</SuiteName>
-    <MinimumRequiredVersion>1.0.0.15</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.19</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationRevision>20</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -161,6 +161,12 @@
     </Compile>
     <Compile Include="Accounts\frmCashReceipts.Designer.cs">
       <DependentUpon>frmCashReceipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmClosingEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmClosingEntry.Designer.cs">
+      <DependentUpon>frmClosingEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounts\frmCurrency.cs">
       <SubType>Form</SubType>
@@ -300,6 +306,12 @@
     </Compile>
     <Compile Include="frmReportContainer.Designer.cs">
       <DependentUpon>frmReportContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTextDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTextDetail.Designer.cs">
+      <DependentUpon>frmTextDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="glb_function.cs" />
     <Compile Include="Inventory\cryRepInventoryIn.cs">
@@ -566,6 +578,9 @@
     <EmbeddedResource Include="Accounts\frmCashReceipts.resx">
       <DependentUpon>frmCashReceipts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmClosingEntry.resx">
+      <DependentUpon>frmClosingEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmCurrency.resx">
       <DependentUpon>frmCurrency.cs</DependentUpon>
     </EmbeddedResource>
@@ -634,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportContainer.resx">
       <DependentUpon>frmReportContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTextDetail.resx">
+      <DependentUpon>frmTextDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory\cryRepInventoryIn.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

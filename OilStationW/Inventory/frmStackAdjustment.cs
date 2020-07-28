@@ -345,12 +345,12 @@ namespace OilStationW.Inventory
                 //تقييد عملية امر التوريد المخزني في الحسابات
 
                 #region InventoryOrderIn
-                DataTable dtKeys = cnnSave.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='امر توريد') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+                DataTable dtKeys = cnnSave.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JourNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
                 string strJPkid = dtKeys.Rows[0]["pkid"].ToString();
 
-                // string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
+                
 
-                string strJourNo = glb_function.glb_strBranchPkid + "-" + strJPkid;
+                string strJourNo = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JourNo"].ToString();
 
                 icheck = 0;
 
@@ -428,12 +428,12 @@ namespace OilStationW.Inventory
                 //تقييد عملية امر الصرف المخزني في الحسابات
                 #region InventoryOrderOut
 
-                DataTable dtKeys = cnnSave.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " and trans_name='امر صرف') IssueNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
+                DataTable dtKeys = cnnSave.GetDataTable("select (select  ifnull(max( convert(  substring(jour_no,instr(jour_no,'-')+1),signed)),0)+1 FROM journal_header where Branch_id=" + glb_function.glb_strBranchPkid + " ) JourNo,(select ifnull(max(pkid),0)+1 from journal_header) pkid");
                 string strJPkid = dtKeys.Rows[0]["pkid"].ToString();
 
-                //string strIssueNo = dtKeys.Rows[0]["IssueNo"].ToString();
+               
 
-                string strJournalNo = glb_function.glb_strBranchPkid + "-" + strJPkid;
+                string strJournalNo = glb_function.glb_strBranchPkid + "-" + dtKeys.Rows[0]["JourNo"].ToString();
 
                 icheck = 0;
 

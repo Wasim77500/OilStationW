@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nmbEditor = new myNumber();
             this.myGroupBox1 = new myGroupBox();
+            this.txtPkidH = new myText();
             this.txtOfficeJourNo = new myText();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPerson = new myText();
@@ -40,13 +41,13 @@
             this.txtHeaderNote = new myText();
             this.dtpJourDate = new myDate();
             this.btnFind = new SmallButton();
-            this.txtJourNo = new myText();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtPkid = new myText();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtJourNo = new myText();
             this.txtAccNo = new myText();
             this.txtBranchId = new myText();
-            this.txtPkid = new myText();
             this.dgvJourDetails = new myDataGrid();
             this.clmPKid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAccId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +65,8 @@
             this.txtDeptTotal = new myText();
             this.txtAloburAccid = new myText();
             this.txtHeadOfficeAccid = new myText();
-            this.txtPkidH = new myText();
+            this.lstAccName = new myList();
+            this.lstAccNo = new myList();
             ((System.ComponentModel.ISupportInitialize)(this.nmbEditor)).BeginInit();
             this.myGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJourDetails)).BeginInit();
@@ -73,7 +75,7 @@
             // nmbEditor
             // 
             this.nmbEditor.DecimalPlaces = 2;
-            this.nmbEditor.Font = new System.Drawing.Font("Arial", 10F);
+            this.nmbEditor.Font = new System.Drawing.Font("Arial", 12F);
             this.nmbEditor.Location = new System.Drawing.Point(688, 56);
             this.nmbEditor.Maximum = new decimal(new int[] {
             1215752191,
@@ -81,7 +83,7 @@
             0,
             0});
             this.nmbEditor.Name = "nmbEditor";
-            this.nmbEditor.Size = new System.Drawing.Size(100, 23);
+            this.nmbEditor.Size = new System.Drawing.Size(100, 26);
             this.nmbEditor.TabIndex = 81;
             this.nmbEditor.ThousandsSeparator = true;
             this.nmbEditor.Visible = false;
@@ -118,6 +120,19 @@
             this.myGroupBox1.W_FormArabicName = null;
             this.myGroupBox1.W_Pk = null;
             this.myGroupBox1.W_TableName = null;
+            // 
+            // txtPkidH
+            // 
+            this.txtPkidH.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPkidH.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtPkidH.Location = new System.Drawing.Point(76, 22);
+            this.txtPkidH.Name = "txtPkidH";
+            this.txtPkidH.Size = new System.Drawing.Size(58, 26);
+            this.txtPkidH.TabIndex = 97;
+            this.txtPkidH.Visible = false;
+            this.txtPkidH.W_ColumnName = "";
+            this.txtPkidH.W_OldValue = "";
+            this.txtPkidH.w_Tran = myText.Tran.None;
             // 
             // txtOfficeJourNo
             // 
@@ -209,19 +224,6 @@
             this.btnFind.UseVisualStyleBackColor = false;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
-            // txtJourNo
-            // 
-            this.txtJourNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtJourNo.Enabled = false;
-            this.txtJourNo.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtJourNo.Location = new System.Drawing.Point(284, 22);
-            this.txtJourNo.Name = "txtJourNo";
-            this.txtJourNo.Size = new System.Drawing.Size(174, 26);
-            this.txtJourNo.TabIndex = 28;
-            this.txtJourNo.W_ColumnName = "";
-            this.txtJourNo.W_OldValue = "";
-            this.txtJourNo.w_Tran = myText.Tran.None;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -244,6 +246,19 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "تاريخ القيد";
             // 
+            // txtPkid
+            // 
+            this.txtPkid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPkid.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtPkid.Location = new System.Drawing.Point(382, 22);
+            this.txtPkid.Name = "txtPkid";
+            this.txtPkid.Size = new System.Drawing.Size(58, 26);
+            this.txtPkid.TabIndex = 85;
+            this.txtPkid.Visible = false;
+            this.txtPkid.W_ColumnName = "";
+            this.txtPkid.W_OldValue = "";
+            this.txtPkid.w_Tran = myText.Tran.None;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -254,6 +269,19 @@
             this.label7.Size = new System.Drawing.Size(82, 18);
             this.label7.TabIndex = 25;
             this.label7.Text = "رقم قيد المحطة";
+            // 
+            // txtJourNo
+            // 
+            this.txtJourNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtJourNo.Enabled = false;
+            this.txtJourNo.Font = new System.Drawing.Font("Arial", 12F);
+            this.txtJourNo.Location = new System.Drawing.Point(284, 22);
+            this.txtJourNo.Name = "txtJourNo";
+            this.txtJourNo.Size = new System.Drawing.Size(174, 26);
+            this.txtJourNo.TabIndex = 28;
+            this.txtJourNo.W_ColumnName = "";
+            this.txtJourNo.W_OldValue = "";
+            this.txtJourNo.w_Tran = myText.Tran.None;
             // 
             // txtAccNo
             // 
@@ -281,34 +309,22 @@
             this.txtBranchId.W_OldValue = "";
             this.txtBranchId.w_Tran = myText.Tran.None;
             // 
-            // txtPkid
-            // 
-            this.txtPkid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPkid.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtPkid.Location = new System.Drawing.Point(382, 22);
-            this.txtPkid.Name = "txtPkid";
-            this.txtPkid.Size = new System.Drawing.Size(58, 26);
-            this.txtPkid.TabIndex = 85;
-            this.txtPkid.Visible = false;
-            this.txtPkid.W_ColumnName = "";
-            this.txtPkid.W_OldValue = "";
-            this.txtPkid.w_Tran = myText.Tran.None;
-            // 
             // dgvJourDetails
             // 
             this.dgvJourDetails.AllowUserToAddRows = false;
             this.dgvJourDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(182)))));
-            this.dgvJourDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(182)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 12F);
+            this.dgvJourDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvJourDetails.BackgroundColor = System.Drawing.Color.FloralWhite;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Chocolate;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJourDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Chocolate;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJourDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvJourDetails.ColumnHeadersHeight = 30;
             this.dgvJourDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmPKid,
@@ -323,8 +339,10 @@
             this.dgvJourDetails.Location = new System.Drawing.Point(3, 147);
             this.dgvJourDetails.Name = "dgvJourDetails";
             this.dgvJourDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(221)))));
-            this.dgvJourDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(221)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 12F);
+            this.dgvJourDetails.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvJourDetails.RowTemplate.Height = 26;
             this.dgvJourDetails.Size = new System.Drawing.Size(795, 329);
             this.dgvJourDetails.TabIndex = 88;
             this.dgvJourDetails.W_ClmName = "";
@@ -524,23 +542,48 @@
             this.txtHeadOfficeAccid.W_OldValue = "";
             this.txtHeadOfficeAccid.w_Tran = myText.Tran.None;
             // 
-            // txtPkidH
+            // lstAccName
             // 
-            this.txtPkidH.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPkidH.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtPkidH.Location = new System.Drawing.Point(76, 22);
-            this.txtPkidH.Name = "txtPkidH";
-            this.txtPkidH.Size = new System.Drawing.Size(58, 26);
-            this.txtPkidH.TabIndex = 97;
-            this.txtPkidH.Visible = false;
-            this.txtPkidH.W_ColumnName = "";
-            this.txtPkidH.W_OldValue = "";
-            this.txtPkidH.w_Tran = myText.Tran.None;
+            this.lstAccName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.lstAccName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.lstAccName.Font = new System.Drawing.Font("Arial", 12F);
+            this.lstAccName.FormattingEnabled = true;
+            this.lstAccName.Location = new System.Drawing.Point(8, 447);
+            this.lstAccName.Name = "lstAccName";
+            this.lstAccName.Size = new System.Drawing.Size(318, 26);
+            this.lstAccName.TabIndex = 98;
+            this.lstAccName.Visible = false;
+            this.lstAccName.W_ColumnName = "";
+            this.lstAccName.W_OldValue = "";
+            this.lstAccName.w_Tran = myList.Tran.None;
+            this.lstAccName.w_ValueType = myList.ValueType.TEXT;
+            this.lstAccName.SelectedIndexChanged += new System.EventHandler(this.lstAccNo_SelectedIndexChanged);
+            // 
+            // lstAccNo
+            // 
+            this.lstAccNo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.lstAccNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.lstAccNo.Font = new System.Drawing.Font("Arial", 12F);
+            this.lstAccNo.FormattingEnabled = true;
+            this.lstAccNo.Location = new System.Drawing.Point(327, 447);
+            this.lstAccNo.Name = "lstAccNo";
+            this.lstAccNo.Size = new System.Drawing.Size(155, 26);
+            this.lstAccNo.TabIndex = 97;
+            this.lstAccNo.Visible = false;
+            this.lstAccNo.W_ColumnName = "";
+            this.lstAccNo.W_OldValue = "";
+            this.lstAccNo.w_Tran = myList.Tran.None;
+            this.lstAccNo.w_ValueType = myList.ValueType.TEXT;
+            this.lstAccNo.SelectedIndexChanged += new System.EventHandler(this.lstAccNo_SelectedIndexChanged);
+            this.lstAccNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstAccNo_KeyDown);
+            this.lstAccNo.Leave += new System.EventHandler(this.lstAccNo_Leave);
             // 
             // frmOtherBranchExpenss
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(800, 522);
+            this.Controls.Add(this.lstAccName);
+            this.Controls.Add(this.lstAccNo);
             this.Controls.Add(this.txtAloburAccid);
             this.Controls.Add(this.txtHeadOfficeAccid);
             this.Controls.Add(this.txtDeptTotal);
@@ -572,6 +615,8 @@
             this.Controls.SetChildIndex(this.txtDeptTotal, 0);
             this.Controls.SetChildIndex(this.txtHeadOfficeAccid, 0);
             this.Controls.SetChildIndex(this.txtAloburAccid, 0);
+            this.Controls.SetChildIndex(this.lstAccNo, 0);
+            this.Controls.SetChildIndex(this.lstAccName, 0);
             ((System.ComponentModel.ISupportInitialize)(this.nmbEditor)).EndInit();
             this.myGroupBox1.ResumeLayout(false);
             this.myGroupBox1.PerformLayout();
@@ -617,5 +662,7 @@
         private myText txtOfficeJourNo;
         private System.Windows.Forms.Label label4;
         private myText txtPkidH;
+        private myList lstAccName;
+        private myList lstAccNo;
     }
 }
