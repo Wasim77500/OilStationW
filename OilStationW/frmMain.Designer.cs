@@ -32,22 +32,14 @@
             this.tbrStatProp = new System.Windows.Forms.Ribbon();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
-            this.tabPurchases = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
-            this.tabSales = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
-            this.tabReports = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.rbLogout = new System.Windows.Forms.RibbonButton();
             this.rbChangePassword = new System.Windows.Forms.RibbonButton();
             this.rbDefineForms = new System.Windows.Forms.RibbonButton();
             this.rbDefineTemplet = new System.Windows.Forms.RibbonButton();
             this.rbAddBranch = new System.Windows.Forms.RibbonButton();
             this.rbAddUser = new System.Windows.Forms.RibbonButton();
+            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
             this.rbPosting = new System.Windows.Forms.RibbonButton();
             this.rbReverseEntry = new System.Windows.Forms.RibbonButton();
             this.rbOtherBranchExp = new System.Windows.Forms.RibbonButton();
@@ -57,6 +49,8 @@
             this.rbBeginingEntry = new System.Windows.Forms.RibbonButton();
             this.rbCurrency = new System.Windows.Forms.RibbonButton();
             this.rbAccountTree = new System.Windows.Forms.RibbonButton();
+            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.rbStockAdjustmentOut = new System.Windows.Forms.RibbonButton();
             this.rbStockAdjustmentAdd = new System.Windows.Forms.RibbonButton();
             this.rbPumpToEmp = new System.Windows.Forms.RibbonButton();
@@ -65,11 +59,17 @@
             this.rbItems = new System.Windows.Forms.RibbonButton();
             this.rbUnits = new System.Windows.Forms.RibbonButton();
             this.rbWareHouse = new System.Windows.Forms.RibbonButton();
+            this.tabPurchases = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.rbPurchaseInvoice = new System.Windows.Forms.RibbonButton();
             this.rbPurchaseExpensses = new System.Windows.Forms.RibbonButton();
             this.rbVendors = new System.Windows.Forms.RibbonButton();
+            this.tabSales = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
             this.rbSalesInvoice = new System.Windows.Forms.RibbonButton();
             this.rbCustomer = new System.Windows.Forms.RibbonButton();
+            this.tabReports = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.rbDialyActivity = new System.Windows.Forms.RibbonButton();
             this.rbSalesInvoiceRep = new System.Windows.Forms.RibbonButton();
             this.rbItemTrans = new System.Windows.Forms.RibbonButton();
@@ -131,89 +131,6 @@
             this.ribbonPanel1.Items.Add(this.rbAddUser);
             this.ribbonPanel1.Text = null;
             // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Panels.Add(this.ribbonPanel2);
-            this.ribbonTab2.Tag = "Accounts";
-            this.ribbonTab2.Text = "الحسابات";
-            // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.ButtonMoreVisible = false;
-            this.ribbonPanel2.Items.Add(this.rbPosting);
-            this.ribbonPanel2.Items.Add(this.rbReverseEntry);
-            this.ribbonPanel2.Items.Add(this.rbOtherBranchExp);
-            this.ribbonPanel2.Items.Add(this.rbCashPayments);
-            this.ribbonPanel2.Items.Add(this.rbCashReceipts);
-            this.ribbonPanel2.Items.Add(this.rbJournal);
-            this.ribbonPanel2.Items.Add(this.rbBeginingEntry);
-            this.ribbonPanel2.Items.Add(this.rbCurrency);
-            this.ribbonPanel2.Items.Add(this.rbAccountTree);
-            this.ribbonPanel2.Text = null;
-            // 
-            // ribbonTab3
-            // 
-            this.ribbonTab3.Panels.Add(this.ribbonPanel3);
-            this.ribbonTab3.Tag = "Inventory";
-            this.ribbonTab3.Text = "إدارة المخازن";
-            // 
-            // ribbonPanel3
-            // 
-            this.ribbonPanel3.ButtonMoreVisible = false;
-            this.ribbonPanel3.Items.Add(this.rbStockAdjustmentOut);
-            this.ribbonPanel3.Items.Add(this.rbStockAdjustmentAdd);
-            this.ribbonPanel3.Items.Add(this.rbPumpToEmp);
-            this.ribbonPanel3.Items.Add(this.rbPumps);
-            this.ribbonPanel3.Items.Add(this.rbEmp);
-            this.ribbonPanel3.Items.Add(this.rbItems);
-            this.ribbonPanel3.Items.Add(this.rbUnits);
-            this.ribbonPanel3.Items.Add(this.rbWareHouse);
-            this.ribbonPanel3.Text = null;
-            // 
-            // tabPurchases
-            // 
-            this.tabPurchases.Panels.Add(this.ribbonPanel4);
-            this.tabPurchases.Tag = "Purchases";
-            this.tabPurchases.Text = "المشتريات";
-            // 
-            // ribbonPanel4
-            // 
-            this.ribbonPanel4.ButtonMoreVisible = false;
-            this.ribbonPanel4.Items.Add(this.rbPurchaseInvoice);
-            this.ribbonPanel4.Items.Add(this.rbPurchaseExpensses);
-            this.ribbonPanel4.Items.Add(this.rbVendors);
-            this.ribbonPanel4.Text = "";
-            // 
-            // tabSales
-            // 
-            this.tabSales.Panels.Add(this.ribbonPanel5);
-            this.tabSales.Tag = "Sales";
-            this.tabSales.Text = "المبيعات";
-            // 
-            // ribbonPanel5
-            // 
-            this.ribbonPanel5.ButtonMoreVisible = false;
-            this.ribbonPanel5.Items.Add(this.rbSalesInvoice);
-            this.ribbonPanel5.Items.Add(this.rbCustomer);
-            this.ribbonPanel5.Text = "";
-            // 
-            // tabReports
-            // 
-            this.tabReports.Panels.Add(this.ribbonPanel6);
-            this.tabReports.Tag = "Reports";
-            this.tabReports.Text = "التقارير";
-            // 
-            // ribbonPanel6
-            // 
-            this.ribbonPanel6.ButtonMoreVisible = false;
-            this.ribbonPanel6.Items.Add(this.rbDialyActivity);
-            this.ribbonPanel6.Items.Add(this.rbSalesInvoiceRep);
-            this.ribbonPanel6.Items.Add(this.rbItemTrans);
-            this.ribbonPanel6.Items.Add(this.rbTrialBalance);
-            this.ribbonPanel6.Items.Add(this.rbJournalsRep);
-            this.ribbonPanel6.Items.Add(this.rbAccountSheet);
-            this.ribbonPanel6.Text = "";
-            // 
             // rbLogout
             // 
             this.rbLogout.Image = global::OilStationW.Properties.Resources.Logout;
@@ -266,6 +183,26 @@
             this.rbAddUser.Text = "مستخدمي النظام";
             this.rbAddUser.ToolTip = "users";
             this.rbAddUser.Click += new System.EventHandler(this.rbAddUser_Click);
+            // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.Panels.Add(this.ribbonPanel2);
+            this.ribbonTab2.Tag = "Accounts";
+            this.ribbonTab2.Text = "الحسابات";
+            // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.ButtonMoreVisible = false;
+            this.ribbonPanel2.Items.Add(this.rbPosting);
+            this.ribbonPanel2.Items.Add(this.rbReverseEntry);
+            this.ribbonPanel2.Items.Add(this.rbOtherBranchExp);
+            this.ribbonPanel2.Items.Add(this.rbCashPayments);
+            this.ribbonPanel2.Items.Add(this.rbCashReceipts);
+            this.ribbonPanel2.Items.Add(this.rbJournal);
+            this.ribbonPanel2.Items.Add(this.rbBeginingEntry);
+            this.ribbonPanel2.Items.Add(this.rbCurrency);
+            this.ribbonPanel2.Items.Add(this.rbAccountTree);
+            this.ribbonPanel2.Text = null;
             // 
             // rbPosting
             // 
@@ -348,6 +285,25 @@
             this.rbAccountTree.Text = "الدليل المحاسبي";
             this.rbAccountTree.Click += new System.EventHandler(this.rbAccountTree_Click);
             // 
+            // ribbonTab3
+            // 
+            this.ribbonTab3.Panels.Add(this.ribbonPanel3);
+            this.ribbonTab3.Tag = "Inventory";
+            this.ribbonTab3.Text = "إدارة المخازن";
+            // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.ButtonMoreVisible = false;
+            this.ribbonPanel3.Items.Add(this.rbStockAdjustmentOut);
+            this.ribbonPanel3.Items.Add(this.rbStockAdjustmentAdd);
+            this.ribbonPanel3.Items.Add(this.rbPumpToEmp);
+            this.ribbonPanel3.Items.Add(this.rbPumps);
+            this.ribbonPanel3.Items.Add(this.rbEmp);
+            this.ribbonPanel3.Items.Add(this.rbItems);
+            this.ribbonPanel3.Items.Add(this.rbUnits);
+            this.ribbonPanel3.Items.Add(this.rbWareHouse);
+            this.ribbonPanel3.Text = null;
+            // 
             // rbStockAdjustmentOut
             // 
             this.rbStockAdjustmentOut.Image = global::OilStationW.Properties.Resources.InventoryOut;
@@ -422,6 +378,20 @@
             this.rbWareHouse.Text = "ادارة المخازن";
             this.rbWareHouse.Click += new System.EventHandler(this.rbWareHouse_Click);
             // 
+            // tabPurchases
+            // 
+            this.tabPurchases.Panels.Add(this.ribbonPanel4);
+            this.tabPurchases.Tag = "Purchases";
+            this.tabPurchases.Text = "المشتريات";
+            // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ButtonMoreVisible = false;
+            this.ribbonPanel4.Items.Add(this.rbPurchaseInvoice);
+            this.ribbonPanel4.Items.Add(this.rbPurchaseExpensses);
+            this.ribbonPanel4.Items.Add(this.rbVendors);
+            this.ribbonPanel4.Text = "";
+            // 
             // rbPurchaseInvoice
             // 
             this.rbPurchaseInvoice.Image = global::OilStationW.Properties.Resources.PurchaseInvoice;
@@ -449,6 +419,19 @@
             this.rbVendors.Text = "الموردين";
             this.rbVendors.Click += new System.EventHandler(this.rbVendors_Click);
             // 
+            // tabSales
+            // 
+            this.tabSales.Panels.Add(this.ribbonPanel5);
+            this.tabSales.Tag = "Sales";
+            this.tabSales.Text = "المبيعات";
+            // 
+            // ribbonPanel5
+            // 
+            this.ribbonPanel5.ButtonMoreVisible = false;
+            this.ribbonPanel5.Items.Add(this.rbSalesInvoice);
+            this.ribbonPanel5.Items.Add(this.rbCustomer);
+            this.ribbonPanel5.Text = "";
+            // 
             // rbSalesInvoice
             // 
             this.rbSalesInvoice.Image = global::OilStationW.Properties.Resources.SalesInvoice;
@@ -466,6 +449,23 @@
             this.rbCustomer.Tag = "frmCustomers";
             this.rbCustomer.Text = "العملاء";
             this.rbCustomer.Click += new System.EventHandler(this.rbCustomer_Click);
+            // 
+            // tabReports
+            // 
+            this.tabReports.Panels.Add(this.ribbonPanel6);
+            this.tabReports.Tag = "Reports";
+            this.tabReports.Text = "التقارير";
+            // 
+            // ribbonPanel6
+            // 
+            this.ribbonPanel6.ButtonMoreVisible = false;
+            this.ribbonPanel6.Items.Add(this.rbDialyActivity);
+            this.ribbonPanel6.Items.Add(this.rbSalesInvoiceRep);
+            this.ribbonPanel6.Items.Add(this.rbItemTrans);
+            this.ribbonPanel6.Items.Add(this.rbTrialBalance);
+            this.ribbonPanel6.Items.Add(this.rbJournalsRep);
+            this.ribbonPanel6.Items.Add(this.rbAccountSheet);
+            this.ribbonPanel6.Text = "";
             // 
             // rbDialyActivity
             // 

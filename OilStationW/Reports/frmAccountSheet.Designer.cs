@@ -40,6 +40,11 @@
             this.ckbPosting = new System.Windows.Forms.CheckBox();
             this.btnClose = new MainButton();
             this.btnPrint = new MainButton();
+            this.rdbGeneral = new System.Windows.Forms.RadioButton();
+            this.rdbCostCenter = new System.Windows.Forms.RadioButton();
+            this.rdbAccounts = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lstCostCent = new myList();
             this.gbDate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +53,7 @@
             this.ckbSelectDate.AutoSize = true;
             this.ckbSelectDate.Font = new System.Drawing.Font("Arial", 14F);
             this.ckbSelectDate.ForeColor = System.Drawing.Color.Chocolate;
-            this.ckbSelectDate.Location = new System.Drawing.Point(66, 77);
+            this.ckbSelectDate.Location = new System.Drawing.Point(55, 77);
             this.ckbSelectDate.Name = "ckbSelectDate";
             this.ckbSelectDate.Size = new System.Drawing.Size(92, 26);
             this.ckbSelectDate.TabIndex = 69;
@@ -66,7 +71,7 @@
             this.gbDate.Enabled = false;
             this.gbDate.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDate.ForeColor = System.Drawing.Color.Chocolate;
-            this.gbDate.Location = new System.Drawing.Point(161, 32);
+            this.gbDate.Location = new System.Drawing.Point(153, 32);
             this.gbDate.Name = "gbDate";
             this.gbDate.Size = new System.Drawing.Size(241, 97);
             this.gbDate.TabIndex = 68;
@@ -134,7 +139,7 @@
             this.lstAccName.FormattingEnabled = true;
             this.lstAccName.Location = new System.Drawing.Point(5, 140);
             this.lstAccName.Name = "lstAccName";
-            this.lstAccName.Size = new System.Drawing.Size(275, 26);
+            this.lstAccName.Size = new System.Drawing.Size(264, 26);
             this.lstAccName.TabIndex = 76;
             this.lstAccName.W_ColumnName = "";
             this.lstAccName.W_OldValue = "";
@@ -148,9 +153,9 @@
             this.lstAccNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.lstAccNo.Font = new System.Drawing.Font("Arial", 12F);
             this.lstAccNo.FormattingEnabled = true;
-            this.lstAccNo.Location = new System.Drawing.Point(282, 140);
+            this.lstAccNo.Location = new System.Drawing.Point(271, 140);
             this.lstAccNo.Name = "lstAccNo";
-            this.lstAccNo.Size = new System.Drawing.Size(120, 26);
+            this.lstAccNo.Size = new System.Drawing.Size(123, 26);
             this.lstAccNo.TabIndex = 75;
             this.lstAccNo.W_ColumnName = "";
             this.lstAccNo.W_OldValue = "";
@@ -173,7 +178,7 @@
             this.ckbPosting.AutoSize = true;
             this.ckbPosting.Font = new System.Drawing.Font("Arial", 14F);
             this.ckbPosting.ForeColor = System.Drawing.Color.Chocolate;
-            this.ckbPosting.Location = new System.Drawing.Point(217, 172);
+            this.ckbPosting.Location = new System.Drawing.Point(217, 215);
             this.ckbPosting.Name = "ckbPosting";
             this.ckbPosting.Size = new System.Drawing.Size(185, 26);
             this.ckbPosting.TabIndex = 77;
@@ -191,7 +196,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btnClose.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnClose.Location = new System.Drawing.Point(165, 204);
+            this.btnClose.Location = new System.Drawing.Point(173, 285);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 35);
             this.btnClose.TabIndex = 79;
@@ -210,7 +215,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Times New Roman", 14F);
             this.btnPrint.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnPrint.Location = new System.Drawing.Point(241, 204);
+            this.btnPrint.Location = new System.Drawing.Point(249, 285);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 35);
             this.btnPrint.TabIndex = 78;
@@ -218,10 +223,78 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // rdbGeneral
+            // 
+            this.rdbGeneral.AutoSize = true;
+            this.rdbGeneral.Checked = true;
+            this.rdbGeneral.Font = new System.Drawing.Font("Arial", 14F);
+            this.rdbGeneral.ForeColor = System.Drawing.Color.Chocolate;
+            this.rdbGeneral.Location = new System.Drawing.Point(354, 247);
+            this.rdbGeneral.Name = "rdbGeneral";
+            this.rdbGeneral.Size = new System.Drawing.Size(48, 26);
+            this.rdbGeneral.TabIndex = 81;
+            this.rdbGeneral.TabStop = true;
+            this.rdbGeneral.Text = "عام";
+            this.rdbGeneral.UseVisualStyleBackColor = true;
+            // 
+            // rdbCostCenter
+            // 
+            this.rdbCostCenter.AutoSize = true;
+            this.rdbCostCenter.Font = new System.Drawing.Font("Arial", 14F);
+            this.rdbCostCenter.ForeColor = System.Drawing.Color.Chocolate;
+            this.rdbCostCenter.Location = new System.Drawing.Point(136, 247);
+            this.rdbCostCenter.Name = "rdbCostCenter";
+            this.rdbCostCenter.Size = new System.Drawing.Size(105, 26);
+            this.rdbCostCenter.TabIndex = 82;
+            this.rdbCostCenter.Text = "مراكز التكلفة";
+            this.rdbCostCenter.UseVisualStyleBackColor = true;
+            // 
+            // rdbAccounts
+            // 
+            this.rdbAccounts.AutoSize = true;
+            this.rdbAccounts.Font = new System.Drawing.Font("Arial", 14F);
+            this.rdbAccounts.ForeColor = System.Drawing.Color.Chocolate;
+            this.rdbAccounts.Location = new System.Drawing.Point(257, 247);
+            this.rdbAccounts.Name = "rdbAccounts";
+            this.rdbAccounts.Size = new System.Drawing.Size(83, 26);
+            this.rdbAccounts.TabIndex = 83;
+            this.rdbAccounts.Text = "الحسابات";
+            this.rdbAccounts.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 14F);
+            this.label3.Location = new System.Drawing.Point(402, 178);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 22);
+            this.label3.TabIndex = 84;
+            this.label3.Text = "مركز التكلفة";
+            // 
+            // lstCostCent
+            // 
+            this.lstCostCent.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.lstCostCent.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.lstCostCent.Font = new System.Drawing.Font("Arial", 12F);
+            this.lstCostCent.FormattingEnabled = true;
+            this.lstCostCent.Location = new System.Drawing.Point(271, 172);
+            this.lstCostCent.Name = "lstCostCent";
+            this.lstCostCent.Size = new System.Drawing.Size(123, 26);
+            this.lstCostCent.TabIndex = 85;
+            this.lstCostCent.W_ColumnName = "";
+            this.lstCostCent.W_OldValue = "";
+            this.lstCostCent.w_Tran = myList.Tran.None;
+            this.lstCostCent.w_ValueType = myList.ValueType.TEXT;
+            // 
             // frmAccountSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(490, 256);
+            this.ClientSize = new System.Drawing.Size(490, 337);
+            this.Controls.Add(this.lstCostCent);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rdbAccounts);
+            this.Controls.Add(this.rdbCostCenter);
+            this.Controls.Add(this.rdbGeneral);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.ckbPosting);
@@ -243,6 +316,11 @@
             this.Controls.SetChildIndex(this.ckbPosting, 0);
             this.Controls.SetChildIndex(this.btnPrint, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.rdbGeneral, 0);
+            this.Controls.SetChildIndex(this.rdbCostCenter, 0);
+            this.Controls.SetChildIndex(this.rdbAccounts, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.lstCostCent, 0);
             this.gbDate.ResumeLayout(false);
             this.gbDate.PerformLayout();
             this.ResumeLayout(false);
@@ -264,5 +342,10 @@
         private System.Windows.Forms.CheckBox ckbPosting;
         private MainButton btnClose;
         private MainButton btnPrint;
+        private System.Windows.Forms.RadioButton rdbGeneral;
+        private System.Windows.Forms.RadioButton rdbCostCenter;
+        private System.Windows.Forms.RadioButton rdbAccounts;
+        private System.Windows.Forms.Label label3;
+        private myList lstCostCent;
     }
 }

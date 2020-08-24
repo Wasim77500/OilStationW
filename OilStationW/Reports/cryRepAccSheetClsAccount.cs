@@ -16,14 +16,14 @@ namespace OilStationW.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class cryRepTrialBalance : ReportClass {
+    public class cryRepAccSheetClsAccount : ReportClass {
         
-        public cryRepTrialBalance() {
+        public cryRepAccSheetClsAccount() {
         }
         
         public override string ResourceName {
             get {
-                return "cryRepTrialBalance.rpt";
+                return "cryRepAccSheetClsAccount.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OilStationW.Reports {
         
         public override string FullResourceName {
             get {
-                return "OilStationW.Reports.cryRepTrialBalance.rpt";
+                return "OilStationW.Reports.cryRepAccSheetClsAccount.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace OilStationW.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace OilStationW.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,9 +82,25 @@ namespace OilStationW.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
         
@@ -106,7 +122,7 @@ namespace OilStationW.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dTotalCredit {
+        public CrystalDecisions.Shared.IParameterField Parameter_AccNo {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,49 +130,17 @@ namespace OilStationW.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dTotalDept {
+        public CrystalDecisions.Shared.IParameterField Parameter_AccName {
             get {
                 return this.DataDefinition.ParameterFields[3];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dTotalPreDept {
-            get {
-                return this.DataDefinition.ParameterFields[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dTotalPreCredit {
-            get {
-                return this.DataDefinition.ParameterFields[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dTotalBalanceDept {
-            get {
-                return this.DataDefinition.ParameterFields[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dTotalBalanceCredit {
-            get {
-                return this.DataDefinition.ParameterFields[7];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedcryRepTrialBalance : Component, ICachedReport {
+    public class CachedcryRepAccSheetClsAccount : Component, ICachedReport {
         
-        public CachedcryRepTrialBalance() {
+        public CachedcryRepAccSheetClsAccount() {
         }
         
         [Browsable(false)]
@@ -193,7 +177,7 @@ namespace OilStationW.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            cryRepTrialBalance rpt = new cryRepTrialBalance();
+            cryRepAccSheetClsAccount rpt = new cryRepAccSheetClsAccount();
             rpt.Site = this.Site;
             return rpt;
         }

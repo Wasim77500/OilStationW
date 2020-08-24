@@ -69,7 +69,8 @@ namespace OilStationW.Reports
             dtSubReport.Columns.Add("PosingAcc");
             dtSubReport.Columns.Add("TotalAcc");
             dtSubReport.Columns.Add("linkR");
-
+            dtSubReport.Columns.Add("TodayNetAmount");
+            dtSubReport.Columns.Add("PosingNetAmount");
 
             dtAccount = cnn.GetDataTable("select acc.acc_name ,'الايرادات' accType, " +
                        " ifnull((select if (sum(d.main_value) < 0,(sum(d.main_value) * -1),sum(d.main_value)) " +
@@ -89,7 +90,7 @@ namespace OilStationW.Reports
                        " and  a.Acc_no  like '6110100001%' " +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
-                       " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR " +
+                       " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR,0 TodayNetAmount, 0 PosingNetAmount " +
                        " from(" +
                        " select pkid, acc_name " +
                        " from accounts acc " +
@@ -97,14 +98,15 @@ namespace OilStationW.Reports
                         "");
 
 
-
-
+            int iStart = 0;
+            int iEnd = 0;
+            decimal dTodayNetAmount = 0;
+            decimal dPosingNetAmount = 0;
             for (int i = 0; i < dtAccount.Rows.Count; i++)
             {
                 if (Convert.ToDecimal(dtAccount.Rows[i]["TodayAcc"].ToString()) != 0 || Convert.ToDecimal(dtAccount.Rows[i]["PosingAcc"].ToString()) != 0)
                 {
-                    string str1 = dtAccount.Rows[i]["TodayAcc"].ToString();
-                    string str2 = dtAccount.Rows[i]["PosingAcc"].ToString();
+                   
 
                     dtAccount.Rows[i]["TotalAcc"] = (Convert.ToDecimal(dtAccount.Rows[i]["TodayAcc"].ToString()) + Convert.ToDecimal(dtAccount.Rows[i]["PosingAcc"].ToString())).ToString();
 
@@ -115,9 +117,20 @@ namespace OilStationW.Reports
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["PosingAcc"] = dtAccount.Rows[i]["PosingAcc"].ToString();
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["TotalAcc"] = dtAccount.Rows[i]["TotalAcc"].ToString();
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["linkR"] = dtAccount.Rows[i]["linkR"].ToString();
+                    dTodayNetAmount = dTodayNetAmount + Convert.ToDecimal(dtAccount.Rows[i]["TodayAcc"].ToString());
+                    dPosingNetAmount = dPosingNetAmount + Convert.ToDecimal(dtAccount.Rows[i]["PosingAcc"].ToString());
+                    iEnd++;
                 }
 
             }
+            for (int i = iStart; i < iEnd; i++)
+            {
+                dtSubReport.Rows[i]["TodayNetAmount"] = dTodayNetAmount.ToString();
+                dtSubReport.Rows[i]["PosingNetAmount"] = dPosingNetAmount.ToString();
+            }
+
+
+            iStart = iEnd;
 
             dtAccount.Rows.Clear();
             dtAccount = cnn.GetDataTable("select acc.acc_name ,'المصروفات' accType, " +
@@ -138,7 +151,7 @@ namespace OilStationW.Reports
                        " and a.Acc_no  like '5%' and a.Acc_no not in ('5110100001','5120100001','5140100001','5130100001') and a.Acc_no not like '52213%' " +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
-                       " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR " +
+                       " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR,0 TodayNetAmount, 0 PosingNetAmount " +
                        " from(" +
                        " select pkid, acc_name " +
                        " from accounts acc " +
@@ -146,7 +159,8 @@ namespace OilStationW.Reports
                         "");
 
 
-
+             dTodayNetAmount = 0;
+             dPosingNetAmount = 0;
 
             for (int i = 0; i < dtAccount.Rows.Count; i++)
             {
@@ -164,10 +178,20 @@ namespace OilStationW.Reports
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["PosingAcc"] = dtAccount.Rows[i]["PosingAcc"].ToString();
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["TotalAcc"] = dtAccount.Rows[i]["TotalAcc"].ToString();
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["linkR"] = dtAccount.Rows[i]["linkR"].ToString();
+                    dTodayNetAmount = dTodayNetAmount + Convert.ToDecimal(dtAccount.Rows[i]["TodayAcc"].ToString());
+                    dPosingNetAmount = dPosingNetAmount + Convert.ToDecimal(dtAccount.Rows[i]["PosingAcc"].ToString());
+                    iEnd++;
                 }
 
             }
+            for (int i = iStart; i < iEnd; i++)
+            {
+                dtSubReport.Rows[i]["TodayNetAmount"] = dTodayNetAmount.ToString();
+                dtSubReport.Rows[i]["PosingNetAmount"] = dPosingNetAmount.ToString();
+            }
 
+
+            iStart = iEnd;
 
 
             dtAccount.Rows.Clear();
@@ -191,7 +215,7 @@ namespace OilStationW.Reports
                        " and a.Acc_no not like '5%' and a.Acc_no not like '6%' and a.acc_no not like '4%'" +
                        " and d.acc_id = acc.pkid " +
                        " group by d.acc_id " +
-                       " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR " +
+                       " having sum(d.main_value) != 0),0) PosingAcc,'0' TotalAcc,'1' linkR,0 TodayNetAmount, 0 PosingNetAmount " +
                        " from(" +
                        " select pkid, acc_name " +
                        " from accounts acc " +
@@ -200,7 +224,8 @@ namespace OilStationW.Reports
 
 
 
-
+            dTodayNetAmount = 0;
+            dPosingNetAmount = 0;
             for (int i = 0; i < dtAccount.Rows.Count; i++)
             {
                 if (Convert.ToDecimal(dtAccount.Rows[i]["TodayAcc"].ToString()) != 0 || Convert.ToDecimal(dtAccount.Rows[i]["PosingAcc"].ToString()) != 0)
@@ -217,10 +242,20 @@ namespace OilStationW.Reports
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["PosingAcc"] = dtAccount.Rows[i]["PosingAcc"].ToString();
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["TotalAcc"] = dtAccount.Rows[i]["TotalAcc"].ToString();
                     dtSubReport.Rows[dtSubReport.Rows.Count - 1]["linkR"] = dtAccount.Rows[i]["linkR"].ToString();
+                    dTodayNetAmount = dTodayNetAmount + Convert.ToDecimal(dtAccount.Rows[i]["TodayAcc"].ToString());
+                    dPosingNetAmount = dPosingNetAmount + Convert.ToDecimal(dtAccount.Rows[i]["PosingAcc"].ToString());
+                    iEnd++;
                 }
 
             }
+            for (int i = iStart; i < iEnd; i++)
+            {
+                dtSubReport.Rows[i]["TodayNetAmount"] = dTodayNetAmount.ToString();
+                dtSubReport.Rows[i]["PosingNetAmount"] = dPosingNetAmount.ToString();
+            }
 
+
+            iStart = iEnd;
 
 
 

@@ -572,6 +572,7 @@
             // 
             // nmbEditor
             // 
+            this.nmbEditor.DecimalPlaces = 2;
             this.nmbEditor.Font = new System.Drawing.Font("Arial", 10F);
             this.nmbEditor.Location = new System.Drawing.Point(642, 177);
             this.nmbEditor.Maximum = new decimal(new int[] {
@@ -591,6 +592,7 @@
             // 
             // nmbEditorExp
             // 
+            this.nmbEditorExp.DecimalPlaces = 2;
             this.nmbEditorExp.Font = new System.Drawing.Font("Arial", 10F);
             this.nmbEditorExp.Location = new System.Drawing.Point(186, 213);
             this.nmbEditorExp.Maximum = new decimal(new int[] {

@@ -259,7 +259,7 @@ namespace OilStationW.Accounts
                 if (dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString() == "")
                     lstAccNo.SelectedIndex = -1;
                 else
-                    lstAccNo.SelectedValue = dgvJourDetails[clmAccNo.Index, e.RowIndex].Value.ToString();
+                    lstAccNo.SelectedValue = dgvJourDetails[clmAccId.Index, e.RowIndex].Value.ToString();
 
                 CtlLocation(RECT, lstAccNo);
 

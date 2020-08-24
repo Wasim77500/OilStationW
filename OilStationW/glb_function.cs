@@ -24,7 +24,9 @@ class glb_function
     internal static bool blMsg;
     internal static string glb_iMainCurrId;
     internal static int glb_iMainCurrDecimal;
-    public static string strDbCnnString = "";
+    internal static string strDbCnnString = "";
+    internal static string strEnglishTitel = "";
+    internal static string strArabicTitel = "";
 
 
     //internal static string strRoot = @"f:\erth\";

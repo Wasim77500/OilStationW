@@ -33,17 +33,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFindItem));
             this.dgvJournalData = new myDataGrid();
-            this.btnClose = new MainButton();
-            this.btnOk = new MainButton();
-            this.btnFind = new SmallButton();
-            this.txtSearchField = new myText();
-            this.label1 = new System.Windows.Forms.Label();
             this.clmPkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmItemNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmItemNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmUnitCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new MainButton();
+            this.btnOk = new MainButton();
+            this.btnFind = new SmallButton();
+            this.txtSearchField = new myText();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +85,45 @@
             this.dgvJournalData.W_ValName = "";
             this.dgvJournalData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJournalData_CellClick);
             this.dgvJournalData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJournalData_CellDoubleClick);
+            // 
+            // clmPkid
+            // 
+            this.clmPkid.HeaderText = "Row id";
+            this.clmPkid.Name = "clmPkid";
+            this.clmPkid.ReadOnly = true;
+            this.clmPkid.Visible = false;
+            // 
+            // clmItemNo
+            // 
+            this.clmItemNo.HeaderText = "رقم الصنف";
+            this.clmItemNo.Name = "clmItemNo";
+            this.clmItemNo.ReadOnly = true;
+            // 
+            // clmItemName
+            // 
+            this.clmItemName.HeaderText = "اسم الصنف";
+            this.clmItemName.Name = "clmItemName";
+            this.clmItemName.ReadOnly = true;
+            // 
+            // clmItemType
+            // 
+            this.clmItemType.HeaderText = "نوع الصنف";
+            this.clmItemType.Name = "clmItemType";
+            this.clmItemType.ReadOnly = true;
+            // 
+            // clmItemNote
+            // 
+            this.clmItemNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmItemNote.HeaderText = "ملاحظات";
+            this.clmItemNote.Name = "clmItemNote";
+            this.clmItemNote.ReadOnly = true;
+            // 
+            // clmUnitCost
+            // 
+            this.clmUnitCost.HeaderText = "تكلفة الصنف";
+            this.clmUnitCost.Name = "clmUnitCost";
+            this.clmUnitCost.ReadOnly = true;
+            this.clmUnitCost.Visible = false;
             // 
             // btnClose
             // 
@@ -163,45 +202,6 @@
             this.label1.TabIndex = 63;
             this.label1.Text = "البحث";
             // 
-            // clmPkid
-            // 
-            this.clmPkid.HeaderText = "Row id";
-            this.clmPkid.Name = "clmPkid";
-            this.clmPkid.ReadOnly = true;
-            this.clmPkid.Visible = false;
-            // 
-            // clmItemNo
-            // 
-            this.clmItemNo.HeaderText = "رقم الصنف";
-            this.clmItemNo.Name = "clmItemNo";
-            this.clmItemNo.ReadOnly = true;
-            // 
-            // clmItemName
-            // 
-            this.clmItemName.HeaderText = "اسم الصنف";
-            this.clmItemName.Name = "clmItemName";
-            this.clmItemName.ReadOnly = true;
-            // 
-            // clmItemType
-            // 
-            this.clmItemType.HeaderText = "نوع الصنف";
-            this.clmItemType.Name = "clmItemType";
-            this.clmItemType.ReadOnly = true;
-            // 
-            // clmItemNote
-            // 
-            this.clmItemNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmItemNote.HeaderText = "ملاحظات";
-            this.clmItemNote.Name = "clmItemNote";
-            this.clmItemNote.ReadOnly = true;
-            // 
-            // clmUnitCost
-            // 
-            this.clmUnitCost.HeaderText = "تكلفة الصنف";
-            this.clmUnitCost.Name = "clmUnitCost";
-            this.clmUnitCost.ReadOnly = true;
-            this.clmUnitCost.Visible = false;
-            // 
             // frmFindItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +213,7 @@
             this.Controls.Add(this.txtSearchField);
             this.Controls.Add(this.label1);
             this.Name = "frmFindItem";
+            this.Text = "البحث عن صنف";
             this.Titel = "البحث عن صنف";
             this.Load += new System.EventHandler(this.frmFindItem_Load);
             this.Controls.SetChildIndex(this.label1, 0);
