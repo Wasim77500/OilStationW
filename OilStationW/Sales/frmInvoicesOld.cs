@@ -423,6 +423,7 @@ namespace OilStationW.Sales
             ",1" +
             ",''" +
             ",''" +
+            ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -446,6 +447,7 @@ namespace OilStationW.Sales
             "," + dCurrValue +
             ",1" +
             ",''" +
+              ",''" +
               ",''" +
            ")");
             if (icheck <= 0)
@@ -480,6 +482,7 @@ namespace OilStationW.Sales
             ",1" +
             ",''" +
             ",''" +
+            ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -503,6 +506,7 @@ namespace OilStationW.Sales
             "," + dCurrValue2 +
             ",1" +
             ",''" +
+              ",''" +
               ",''" +
            ")");
             if (icheck <= 0)

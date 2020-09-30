@@ -41,15 +41,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtJourNo = new myText();
             this.dgvJourDetails = new myDataGrid();
-            this.clmPKid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAccId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAccNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAccName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProfitCenter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmJourNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnUpdate = new MainButton();
             this.btnClose = new MainButton();
             this.btnNew = new MainButton();
@@ -65,6 +56,16 @@
             this.btnGetBegningEntry = new MainButton();
             this.lstAccName = new myList();
             this.lstAccNo = new myList();
+            this.clmPKid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAccId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAccNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAccName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDept = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmJourNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProfitCenter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProfitCenter1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.myGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJourDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmbExchangeRate)).BeginInit();
@@ -220,8 +221,9 @@
             this.clmAccName,
             this.clmDept,
             this.clmCredit,
-            this.clmProfitCenter,
             this.clmJourNote,
+            this.clmProfitCenter,
+            this.clmProfitCenter1,
             this.clmDelete});
             this.dgvJourDetails.EnableHeadersVisualStyles = false;
             this.dgvJourDetails.Location = new System.Drawing.Point(3, 126);
@@ -231,7 +233,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F);
             this.dgvJourDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvJourDetails.RowTemplate.Height = 26;
-            this.dgvJourDetails.Size = new System.Drawing.Size(795, 329);
+            this.dgvJourDetails.Size = new System.Drawing.Size(835, 329);
             this.dgvJourDetails.TabIndex = 63;
             this.dgvJourDetails.W_ClmName = "";
             this.dgvJourDetails.W_PK = "";
@@ -242,66 +244,6 @@
             this.dgvJourDetails.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJourDetails_CellDoubleClick);
             this.dgvJourDetails.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvJourDetails_RowsAdded);
             this.dgvJourDetails.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvJourDetails_KeyDown);
-            // 
-            // clmPKid
-            // 
-            this.clmPKid.HeaderText = "رقم التصنيف";
-            this.clmPKid.Name = "clmPKid";
-            this.clmPKid.ReadOnly = true;
-            this.clmPKid.Visible = false;
-            // 
-            // clmAccId
-            // 
-            this.clmAccId.HeaderText = "رقم تعريف  الحساب";
-            this.clmAccId.Name = "clmAccId";
-            this.clmAccId.ReadOnly = true;
-            this.clmAccId.Visible = false;
-            this.clmAccId.Width = 396;
-            // 
-            // clmAccNo
-            // 
-            this.clmAccNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmAccNo.HeaderText = "رقم الحساب";
-            this.clmAccNo.Name = "clmAccNo";
-            this.clmAccNo.ReadOnly = true;
-            // 
-            // clmAccName
-            // 
-            this.clmAccName.HeaderText = "اسم الحساب";
-            this.clmAccName.Name = "clmAccName";
-            this.clmAccName.ReadOnly = true;
-            this.clmAccName.Width = 200;
-            // 
-            // clmDept
-            // 
-            this.clmDept.HeaderText = "مدين";
-            this.clmDept.Name = "clmDept";
-            this.clmDept.ReadOnly = true;
-            // 
-            // clmCredit
-            // 
-            this.clmCredit.HeaderText = "دائن";
-            this.clmCredit.Name = "clmCredit";
-            this.clmCredit.ReadOnly = true;
-            // 
-            // clmProfitCenter
-            // 
-            this.clmProfitCenter.HeaderText = "مركز الربحية";
-            this.clmProfitCenter.Name = "clmProfitCenter";
-            this.clmProfitCenter.ReadOnly = true;
-            // 
-            // clmJourNote
-            // 
-            this.clmJourNote.HeaderText = "البيان";
-            this.clmJourNote.Name = "clmJourNote";
-            // 
-            // clmDelete
-            // 
-            this.clmDelete.HeaderText = "حذف";
-            this.clmDelete.Image = global::OilStationW.Properties.Resources.Delete16;
-            this.clmDelete.Name = "clmDelete";
-            this.clmDelete.ReadOnly = true;
-            this.clmDelete.Width = 50;
             // 
             // btnUpdate
             // 
@@ -384,7 +326,7 @@
             this.txtDeptTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDeptTotal.Enabled = false;
             this.txtDeptTotal.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtDeptTotal.Location = new System.Drawing.Point(648, 460);
+            this.txtDeptTotal.Location = new System.Drawing.Point(686, 460);
             this.txtDeptTotal.Name = "txtDeptTotal";
             this.txtDeptTotal.Size = new System.Drawing.Size(150, 26);
             this.txtDeptTotal.TabIndex = 63;
@@ -397,7 +339,7 @@
             this.txtCreditTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCreditTotal.Enabled = false;
             this.txtCreditTotal.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtCreditTotal.Location = new System.Drawing.Point(496, 460);
+            this.txtCreditTotal.Location = new System.Drawing.Point(534, 460);
             this.txtCreditTotal.Name = "txtCreditTotal";
             this.txtCreditTotal.Size = new System.Drawing.Size(150, 26);
             this.txtCreditTotal.TabIndex = 73;
@@ -410,7 +352,7 @@
             this.txtDiff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiff.Enabled = false;
             this.txtDiff.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtDiff.Location = new System.Drawing.Point(496, 487);
+            this.txtDiff.Location = new System.Drawing.Point(534, 487);
             this.txtDiff.Name = "txtDiff";
             this.txtDiff.Size = new System.Drawing.Size(302, 26);
             this.txtDiff.TabIndex = 74;
@@ -563,10 +505,76 @@
             this.lstAccNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstAccNo_KeyDown);
             this.lstAccNo.Leave += new System.EventHandler(this.lstAccNo_Leave);
             // 
+            // clmPKid
+            // 
+            this.clmPKid.HeaderText = "رقم التصنيف";
+            this.clmPKid.Name = "clmPKid";
+            this.clmPKid.ReadOnly = true;
+            this.clmPKid.Visible = false;
+            // 
+            // clmAccId
+            // 
+            this.clmAccId.HeaderText = "رقم تعريف  الحساب";
+            this.clmAccId.Name = "clmAccId";
+            this.clmAccId.ReadOnly = true;
+            this.clmAccId.Visible = false;
+            this.clmAccId.Width = 396;
+            // 
+            // clmAccNo
+            // 
+            this.clmAccNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmAccNo.HeaderText = "رقم الحساب";
+            this.clmAccNo.Name = "clmAccNo";
+            this.clmAccNo.ReadOnly = true;
+            // 
+            // clmAccName
+            // 
+            this.clmAccName.HeaderText = "اسم الحساب";
+            this.clmAccName.Name = "clmAccName";
+            this.clmAccName.ReadOnly = true;
+            this.clmAccName.Width = 200;
+            // 
+            // clmDept
+            // 
+            this.clmDept.HeaderText = "مدين";
+            this.clmDept.Name = "clmDept";
+            this.clmDept.ReadOnly = true;
+            // 
+            // clmCredit
+            // 
+            this.clmCredit.HeaderText = "دائن";
+            this.clmCredit.Name = "clmCredit";
+            this.clmCredit.ReadOnly = true;
+            // 
+            // clmJourNote
+            // 
+            this.clmJourNote.HeaderText = "البيان";
+            this.clmJourNote.Name = "clmJourNote";
+            // 
+            // clmProfitCenter
+            // 
+            this.clmProfitCenter.HeaderText = "مركز التكلفة";
+            this.clmProfitCenter.Name = "clmProfitCenter";
+            this.clmProfitCenter.ReadOnly = true;
+            // 
+            // clmProfitCenter1
+            // 
+            this.clmProfitCenter1.HeaderText = "مركز التكلفة1";
+            this.clmProfitCenter1.Name = "clmProfitCenter1";
+            this.clmProfitCenter1.ReadOnly = true;
+            // 
+            // clmDelete
+            // 
+            this.clmDelete.HeaderText = "حذف";
+            this.clmDelete.Image = global::OilStationW.Properties.Resources.Delete16;
+            this.clmDelete.Name = "clmDelete";
+            this.clmDelete.ReadOnly = true;
+            this.clmDelete.Width = 50;
+            // 
             // frmBeginingEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(801, 520);
+            this.ClientSize = new System.Drawing.Size(840, 520);
             this.Controls.Add(this.lstAccName);
             this.Controls.Add(this.lstAccNo);
             this.Controls.Add(this.btnGetBegningEntry);
@@ -639,18 +647,19 @@
         private myNumber nmbExchangeRate;
         private myNumber nmbEditor;
         private MainButton btnSave;
+        private MainButton btnClosingEntry;
+        private MainButton btnGetBegningEntry;
+        private myList lstAccName;
+        private myList lstAccNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPKid;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDept;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCredit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJourNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter1;
         private System.Windows.Forms.DataGridViewImageColumn clmDelete;
-        private MainButton btnClosingEntry;
-        private MainButton btnGetBegningEntry;
-        private myList lstAccName;
-        private myList lstAccNo;
     }
 }

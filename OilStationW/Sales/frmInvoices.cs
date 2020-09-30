@@ -363,6 +363,7 @@ namespace OilStationW.Sales
             ",1" +
             ",''" +
             ",''" +
+            ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -386,6 +387,7 @@ namespace OilStationW.Sales
             "," + dCurrValue +
             ",1" +
             ",''" +
+              ",''" +
               ",''" +
            ")");
             if (icheck <= 0)
@@ -420,6 +422,7 @@ namespace OilStationW.Sales
             ",1" +
             ",''" +
             ",''" +
+            ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -450,6 +453,7 @@ namespace OilStationW.Sales
            ",1" +
            ",'حساب " + dgvInvoices[clmPumpNo.Index, i].Value.ToString() + " ليوم " +dtpJourDate.Value.ToString("dd/MM/yyyy")+"'"+
              ",''" +
+              ",''" +
           ")");
                 if (icheck <= 0)
                 {

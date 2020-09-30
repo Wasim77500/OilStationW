@@ -76,6 +76,7 @@
             this.rbTrialBalance = new System.Windows.Forms.RibbonButton();
             this.rbJournalsRep = new System.Windows.Forms.RibbonButton();
             this.rbAccountSheet = new System.Windows.Forms.RibbonButton();
+            this.rbTamplateAcc = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // tbrStatProp
@@ -459,6 +460,7 @@
             // ribbonPanel6
             // 
             this.ribbonPanel6.ButtonMoreVisible = false;
+            this.ribbonPanel6.Items.Add(this.rbTamplateAcc);
             this.ribbonPanel6.Items.Add(this.rbDialyActivity);
             this.ribbonPanel6.Items.Add(this.rbSalesInvoiceRep);
             this.ribbonPanel6.Items.Add(this.rbItemTrans);
@@ -520,6 +522,14 @@
             this.rbAccountSheet.Tag = "frmAccountSheet";
             this.rbAccountSheet.Text = "كشف حساب";
             this.rbAccountSheet.Click += new System.EventHandler(this.rbAccountSheet_Click);
+            // 
+            // rbTamplateAcc
+            // 
+            this.rbTamplateAcc.Image = global::OilStationW.Properties.Resources.AccountSheet;
+            this.rbTamplateAcc.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbTamplateAcc.SmallImage")));
+            this.rbTamplateAcc.Tag = "frmTemplateReport";
+            this.rbTamplateAcc.Text = "القوالب الجاهزة";
+            this.rbTamplateAcc.Click += new System.EventHandler(this.rbTamplateAcc_Click);
             // 
             // frmMain
             // 
@@ -589,5 +599,6 @@
         private System.Windows.Forms.RibbonButton rbAccountSheet;
         private System.Windows.Forms.RibbonButton rbDialyActivity;
         private System.Windows.Forms.RibbonButton rbOtherBranchExp;
+        private System.Windows.Forms.RibbonButton rbTamplateAcc;
     }
 }

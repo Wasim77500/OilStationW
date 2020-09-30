@@ -231,6 +231,7 @@ namespace OilStationW.Accounts
                 ",1" +
                 ",'" + dgvJourDetails[clmJourNote.Index, i].Value.ToString() + "'" +
                 ",''" +
+                ",''" +
                ")");
                 if (icheck <= 0)
                 {
@@ -245,6 +246,11 @@ namespace OilStationW.Accounts
             cnn.glb_commitTransaction();
            
             glb_function.MsgBox("تمت عملية الحفظ بنجاح");
+
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -58,6 +58,8 @@ namespace OilStationW.Inventory
             lstBranches.ValueMember = "pkid";
             lstBranches.DisplayMember = "Branch_name";
 
+           
+
 
             DataTable dtAcc = cnn.GetDataTable("SELECT pkid,acc_no,acc_name FROM accounts where level=5 and stat='فعال' order by acc_no");
             lstAccNo.DataSource = dtAcc.DefaultView;

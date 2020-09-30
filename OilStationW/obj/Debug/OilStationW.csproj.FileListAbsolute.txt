@@ -204,3 +204,5 @@ C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.csproj.CopyComplete
 C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.exe
 C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.pdb
 C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.Reports.frmTrialBalanceOld.resources
+C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.Reports.frmTemplateReport.resources
+C:\MyProject\OilStationW\OilStationW\obj\Debug\OilStationW.Accounts.frmFindProfitCenter1.resources

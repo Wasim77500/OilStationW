@@ -58,7 +58,7 @@ namespace OilStationW
                 //glb_function.strDbCnnString = "server=localhost;port=3306;charset=utf8;database=ammar" + nmbYear.Value.ToString() + ";userid=root;password=ammar7700;SslMode=none;AllowPublicKeyRetrieval=True";
                  glb_function.strDbCnnString =  "server=192.168.1.7;port=3306;charset=utf8;database=headoffice"+nmbYear.Value.ToString()+";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
 
-                // glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice" + nmbYear.Value.ToString() + ";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+             //    glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=headoffice" + nmbYear.Value.ToString() + ";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
                 glb_function.glb_DB_Name = "headoffice";
                 glb_function.strArabicTitel = "الأدارة العامة" + "\n" + "اليمن - صنعاء - شارع الرقاص" + "\n" + "رقم التلفون/ 213569 -1-00967";
                 glb_function.strEnglishTitel = "Head Office" + "\n"+ "Yemen - Sana'a - Alrkaas St" +"\n"+ "Tel No.    : 00967-1-213569";
@@ -74,9 +74,9 @@ namespace OilStationW
             }
             else if (lstBranches.SelectedValue.ToString() == "100")
             {
-                glb_function.strDbCnnString = "server=localhost;port=3306;charset=utf8;database=ammar" + nmbYear.Value.ToString() + ";userid=root;password=ammar7700;SslMode=none;AllowPublicKeyRetrieval=True";
-                //  glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=ammar"+nmbYear.Value.ToString()+";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
-               // glb_function.strDbCnnString = "server=localhost;port=3300;charset=utf8;database=ammar" + nmbYear.Value.ToString() + ";userid=root;password=bigboss;SslMode=none;AllowPublicKeyRetrieval=True";
+               // glb_function.strDbCnnString = "server=localhost;port=3306;charset=utf8;database=ammar" + nmbYear.Value.ToString() + ";userid=root;password=ammar7700;SslMode=none;AllowPublicKeyRetrieval=True";
+               //   glb_function.strDbCnnString = "server=192.168.1.7;port=3306;charset=utf8;database=ammar"+nmbYear.Value.ToString()+";userid=root;password=alforat#Wasim5241;SslMode=none;AllowPublicKeyRetrieval=True";
+                glb_function.strDbCnnString = "server=localhost;port=3306;charset=utf8;database=ammar" + nmbYear.Value.ToString() + ";userid=root;password=root;SslMode=none;AllowPublicKeyRetrieval=True";
                 glb_function.glb_DB_Name = "ammar";
                 glb_function.strArabicTitel = "الأدارة العامة" + "\n" + "اليمن - صنعاء - شارع الرقاص" + "\n" + "رقم التلفون/ 213569 -1-00967";
                 glb_function.strEnglishTitel = "Head Office" + "\n" + "Yemen - Sana'a - Alrkaas St" + "\n" + "Tel No.    : 00967-1-213569";

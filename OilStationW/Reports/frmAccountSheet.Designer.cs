@@ -45,6 +45,7 @@
             this.rdbAccounts = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.lstCostCent = new myList();
+            this.rdbSummary = new System.Windows.Forms.RadioButton();
             this.gbDate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,6 +237,7 @@
             this.rdbGeneral.TabStop = true;
             this.rdbGeneral.Text = "عام";
             this.rdbGeneral.UseVisualStyleBackColor = true;
+            this.rdbGeneral.CheckedChanged += new System.EventHandler(this.rdbGeneral_CheckedChanged);
             // 
             // rdbCostCenter
             // 
@@ -286,10 +288,23 @@
             this.lstCostCent.w_Tran = myList.Tran.None;
             this.lstCostCent.w_ValueType = myList.ValueType.TEXT;
             // 
+            // rdbSummary
+            // 
+            this.rdbSummary.AutoSize = true;
+            this.rdbSummary.Font = new System.Drawing.Font("Arial", 14F);
+            this.rdbSummary.ForeColor = System.Drawing.Color.Chocolate;
+            this.rdbSummary.Location = new System.Drawing.Point(25, 247);
+            this.rdbSummary.Name = "rdbSummary";
+            this.rdbSummary.Size = new System.Drawing.Size(75, 26);
+            this.rdbSummary.TabIndex = 86;
+            this.rdbSummary.Text = "مختصر";
+            this.rdbSummary.UseVisualStyleBackColor = true;
+            // 
             // frmAccountSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(490, 337);
+            this.Controls.Add(this.rdbSummary);
             this.Controls.Add(this.lstCostCent);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rdbAccounts);
@@ -321,6 +336,7 @@
             this.Controls.SetChildIndex(this.rdbAccounts, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.lstCostCent, 0);
+            this.Controls.SetChildIndex(this.rdbSummary, 0);
             this.gbDate.ResumeLayout(false);
             this.gbDate.PerformLayout();
             this.ResumeLayout(false);
@@ -347,5 +363,6 @@
         private System.Windows.Forms.RadioButton rdbAccounts;
         private System.Windows.Forms.Label label3;
         private myList lstCostCent;
+        private System.Windows.Forms.RadioButton rdbSummary;
     }
 }

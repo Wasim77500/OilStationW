@@ -189,7 +189,7 @@
             // frmTrialBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(393, 251);
+            this.ClientSize = new System.Drawing.Size(386, 265);
             this.Controls.Add(this.ckbClosingEntry);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPrint);

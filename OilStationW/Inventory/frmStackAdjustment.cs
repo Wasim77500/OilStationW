@@ -389,6 +389,7 @@ namespace OilStationW.Inventory
                 ",1" +
                 ",''" +
                 ",''" +
+                ",''" +
                ")");
                 if (icheck <= 0)
                 {
@@ -412,6 +413,7 @@ namespace OilStationW.Inventory
                 "," + dCurrValue +
                 ",1" +
                 ",''" +
+                  ",''" +
                   ",''" +
                ")");
                 if (icheck <= 0)
@@ -472,6 +474,7 @@ namespace OilStationW.Inventory
                 ",1" +
                 ",''" +
                  ",''" +
+                 ",''" +
                ")");
                 if (icheck <= 0)
                 {
@@ -496,6 +499,7 @@ namespace OilStationW.Inventory
                 "," + dCurrValue +
                 ",1" +
                 ",''" +
+                 ",''" +
                  ",''" +
                ")");
                 if (icheck <= 0)

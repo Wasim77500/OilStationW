@@ -450,6 +450,7 @@ namespace OilStationW.Purchases
             ",1" +
             ",''" +
             ",''" +
+            ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -474,6 +475,7 @@ namespace OilStationW.Purchases
             ",1" +
             ",''" +
               ",''" +
+               ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -500,6 +502,7 @@ namespace OilStationW.Purchases
                 "," + dCurrValue +
                 ",1" +
                 ",''" +
+                  ",''" +
                   ",''" +
                ")");
                 if (icheck <= 0)

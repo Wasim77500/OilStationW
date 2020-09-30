@@ -86,7 +86,7 @@ namespace OilStationW.Accounts
             dgvJourDetails.Rows.Clear();
             ConnectionToMySQL cnn = new ConnectionToMySQL();
             DataTable dtJournalData = cnn.GetDataTable("SELECT h.Pkid, h.stat, Branch_id, jour_no, trans_name, trans_id, date_format(jour_date,'%d/%m/%Y') jour_date, jour_note,Person,trans_no, " +
-                          "  d.pkid dpkid, d.stat dstat, curr_id,(select c.curr_name from currency c where c.pkid=d.curr_id) curr_name, acc_id, main_value, jour_value, exchange_Rate, jour_details,profitCenter, " +
+                          "  d.pkid dpkid, d.stat dstat, curr_id,(select c.curr_name from currency c where c.pkid=d.curr_id) curr_name, acc_id, main_value, jour_value, exchange_Rate, jour_details,profitCenter,profitCenter1, " +
                            " a.acc_no, a.acc_name " +
                           "  FROM journal_header h " +
                           "  join journal_details d " +
@@ -130,13 +130,13 @@ namespace OilStationW.Accounts
 
                 dgvJourDetails[clmJourNote.Index, dgvJourDetails.Rows.Count - 1].Value = dtJournalData.Rows[i]["jour_details"].ToString();
                 dgvJourDetails[clmProfitCenter.Index, dgvJourDetails.Rows.Count - 1].Value = dtJournalData.Rows[i]["profitCenter"].ToString();
+                dgvJourDetails[clmProfitCenter1.Index, dgvJourDetails.Rows.Count - 1].Value = dtJournalData.Rows[i]["profitCenter1"].ToString();
 
-                
 
 
 
                 txtCreditTotal.Text = (Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, dgvJourDetails.Rows.Count - 1].Value)).ToString("###,###,###,##0.##");
-
+                dgvJourDetails.Rows.Add();
                 //Test git hub
             }
 
@@ -290,6 +290,16 @@ namespace OilStationW.Accounts
 
 
             }
+            else if (e.ColumnIndex == clmProfitCenter1.Index)
+            {
+                frmFindProfitCenter1 frm = new frmFindProfitCenter1();
+                frm.ShowDialog();
+                if (frm.strAccName != "")
+                    dgvJourDetails[clmProfitCenter1.Index, e.RowIndex].Value = frm.strAccName;
+
+
+
+            }
             else if (e.ColumnIndex == clmJourNote.Index)
             {
                 frmTextDetail frm = new frmTextDetail();
@@ -422,6 +432,7 @@ namespace OilStationW.Accounts
             ",1" +
             ",'"+ txtHeaderNote .Text .Trim()+ "'" +
             ",''" +
+            ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -458,6 +469,7 @@ namespace OilStationW.Accounts
                 ",1" +
                 ",'" + dgvJourDetails[clmJourNote.Index, i].Value.ToString()  + "'" +
                 ",'" + dgvJourDetails[clmProfitCenter.Index, i].Value.ToString()  + "'" +
+                ",'" + dgvJourDetails[clmProfitCenter1.Index, i].Value.ToString() + "'" +
                ")");
                 if (icheck <= 0)
                 {
@@ -527,6 +539,7 @@ namespace OilStationW.Accounts
             ",1" +
             ",'"+ txtHeaderNote .Text.Trim()+ "'" +
              ",''" +
+             ",''" +
            ")");
             if (icheck <= 0)
             {
@@ -563,6 +576,7 @@ namespace OilStationW.Accounts
                 ",1" +
                 ",'" + dgvJourDetails[clmJourNote.Index, i].Value.ToString()  + "'" +
                 ",'" + dgvJourDetails[clmProfitCenter.Index, i].Value.ToString()  + "'" +
+                ",'" + dgvJourDetails[clmProfitCenter1.Index, i].Value.ToString() + "'" +
                ")");
                 if (icheck <= 0)
                 {
@@ -592,8 +606,8 @@ namespace OilStationW.Accounts
             DataTable dtReport = new DataTable();
 
             ConnectionToMySQL cnn = new ConnectionToMySQL();
-            dtReport = cnn.GetDataTable("select h.pkid,h.jour_no,h.trans_name,date_format(h.jour_date,'%d/%m/%Y') jour_date,h.jour_note, a.Acc_no,a.acc_name, " +
-                   " if (d.main_value > 0,d.main_value,0) Dept,if (d.main_value < 0,d.main_value * -1,0) Credit,d.jour_details,d.trans_no " +
+            dtReport = cnn.GetDataTable("select h.pkid,h.jour_no,h.trans_name,date_format(h.jour_date,'%d/%m/%Y') jour_date,h.jour_note,h.Person, a.Acc_no,a.acc_name, " +
+                   " if (d.main_value > 0,d.main_value,0) Dept,if (d.main_value < 0,d.main_value * -1,0) Credit,d.jour_details,h.trans_no " +
                            " from journal_header h " +
                           "  join journal_details d on(h.pkid= d.header_id) " +
                           "  join accounts a on(a.pkid= d.acc_id)  " +

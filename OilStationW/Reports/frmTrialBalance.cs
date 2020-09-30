@@ -45,7 +45,7 @@ namespace OilStationW.Reports
             else
                 strStat = " and h.stat in ( 'مرحل')";
 
-            if(ckbClosingEntry.Checked ==false )
+            if (ckbClosingEntry.Checked == false)
             {
                 strStat += " and h.trans_name!='سند اقفال'";
             }
@@ -54,7 +54,7 @@ namespace OilStationW.Reports
             {
 
                 strDate = " and h.trans_name!='قيد افتتاحي' and jour_date between str_to_date('" + dtpFrom.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y') and str_to_date('" + dtpTo.Value.ToString("dd/MM/yyyy") + "', '%d/%m/%Y')";
-                
+
                 if(dtpFrom.Value.ToString("dd/MM")== "01/01"  )
                     strPrevDate = " and h.trans_name='قيد افتتاحي'";
                 else
@@ -62,13 +62,13 @@ namespace OilStationW.Reports
 
             }
 
-            if(strPrevDate=="")
+            if (strPrevDate == "")
             {
                 //  strPrevDate = " and jour_date between str_to_date('01/01/1999', '%d/%m/%Y') and str_to_date('02/01/1999', '%d/%m/%Y')";
                 strDate = " and h.trans_name!='قيد افتتاحي'";
                 strPrevDate = " and h.trans_name='قيد افتتاحي'";
             }
-           
+
             dtReport.Clear();
 
             //dtReport = cnn.GetDataTable("SELECT Acc_no,acc_name ," +
@@ -107,7 +107,7 @@ namespace OilStationW.Reports
            " 0.00 balance_dept,0.00 balance_credit " +
            "from journal_header h " +
            " join journal_details d on(h.Pkid = d.header_id) " +
-           " join accounts a on(a.pkid = d.acc_id) " +
+           " join accounts a on(a.pkid = d.acc_id) "+
            " group by a.pkid,acc_no,acc_name ,a.parent_id " +
            " order by acc_no " +
            "");
@@ -162,14 +162,17 @@ namespace OilStationW.Reports
                     dPreCredit = Convert.ToDecimal(dtReport.Rows[i]["Prevcredit"].ToString());
 
 
-
-                if ((dDept + dPreDept) - (dCredit + dPreCredit) == 0 )
+                string stracc = dtReport.Rows[i]["acc_no"].ToString();
+                // if ((dDept + dPreDept) - (dCredit + dPreCredit) == 0 )
+                // if ((dDept- dPreDept)==0 && (dCredit- dPreCredit )== 0)
+                if ((dDept - dCredit ) == 0 && (dPreDept - dPreCredit) == 0)
                 {
                     dtReport.Rows.Remove(dtReport.Rows[i]);
                     i--;
                 }
                 else
                 {
+                   
                     dBalance = (dDept+dPreDept) - (dCredit+dPreCredit);
 
                     if (dBalance < 0)
@@ -186,9 +189,10 @@ namespace OilStationW.Reports
 
             }
 
+
             DataTable dtMainAcc = cnn.GetDataTable("select pkid,acc_no,acc_name ,a.parent_id  " +
-               " from accounts a  "+
-               " where a.level < 5  "+
+               " from accounts a  " +
+               " where a.level < 5  " +
                " order by Acc_no desc");
 
 
@@ -201,72 +205,108 @@ namespace OilStationW.Reports
             int icount = 0;
 
             int iReportCount = dtReport.Rows.Count;
+            decimal dBalanceTotal = 0;
             for (int i = 0; i < dtMainAcc.Rows.Count; i++)
             {
-                 sumDept = 0;
-                 sumCredit = 0;
-                 sumPrevDept = 0;
-                 sumPrevCredit = 0;
-                 sumBalDept = 0;
-                 sumBalCredit = 0;
+                sumDept = 0;
+                sumCredit = 0;
+                sumPrevDept = 0;
+                sumPrevCredit = 0;
+                sumBalDept = 0;
+                sumBalCredit = 0;
                 icount = 0;
                 for (int j = 0; j < iReportCount; j++)
                 {
-                    string st = dtMainAcc.Rows[i]["pkid"].ToString();
-                    string sttr = dtReport.Rows[j]["parent_id"].ToString();
+
+
                     if (dtMainAcc.Rows[i]["pkid"].ToString() == dtReport.Rows[j]["parent_id"].ToString())
                     {
                         sumDept = sumDept + Convert.ToDecimal(dtReport.Rows[j]["Dept"].ToString());
                         sumCredit = sumCredit + Convert.ToDecimal(dtReport.Rows[j]["credit"].ToString());
                         sumPrevDept = sumPrevDept + Convert.ToDecimal(dtReport.Rows[j]["Prevdept"].ToString());
                         sumPrevCredit = sumPrevCredit + Convert.ToDecimal(dtReport.Rows[j]["Prevcredit"].ToString());
-                        sumBalDept = sumBalDept + Convert.ToDecimal(dtReport.Rows[j]["balance_dept"].ToString());
-                        sumBalCredit = sumBalCredit + Convert.ToDecimal(dtReport.Rows[j]["balance_credit"].ToString());
+
+
+                        decimal dSumBalanc = (sumDept + sumPrevDept) - (sumCredit + sumPrevCredit);
+                        if (dSumBalanc > 0)
+                        {
+                            sumBalDept = dSumBalanc;
+                            sumBalCredit = 0;
+                        }
+                        else
+                        {
+                            sumBalDept = 0;
+                            sumBalCredit = dSumBalanc * -1;
+                        }
+
                         icount = 1;
 
 
                     }
-                       
+
 
                 }
                 if (icount <= 0)
                     continue;
 
 
-               
+
 
                 DataRow repRow = dtReport.NewRow();
                 repRow["pkid"] = dtMainAcc.Rows[i]["pkid"].ToString();
                 repRow["acc_no"] = dtMainAcc.Rows[i]["acc_no"].ToString();
                 repRow["acc_name"] = dtMainAcc.Rows[i]["acc_name"].ToString();
-                if (dtMainAcc.Rows[i]["parent_id"].ToString() == "")
+                if (dtMainAcc.Rows[i]["parent_id"].ToString() == "" || dtMainAcc.Rows[i]["parent_id"].ToString() == "0")
                 {
                     repRow["parent_id"] = "0";
-                    dTotalDept = dTotalDept+ sumDept;
-                     dTotalCredit = dTotalCredit + sumCredit;
-                     dTotalPreDept = dTotalPreDept+ sumPrevDept;
-                     dTotalPreCredit = dTotalPreCredit+ sumPrevCredit;
+                    dTotalDept = dTotalDept + sumDept;
+                    dTotalCredit = dTotalCredit + sumCredit;
+                    dTotalPreDept = dTotalPreDept + sumPrevDept;
+                    dTotalPreCredit = dTotalPreCredit + sumPrevCredit;
+
+
+
+
                     dTotalBalanceDept = dTotalBalanceDept + sumBalDept;
                     dTotalBalanceCredit = dTotalBalanceCredit + sumBalCredit;
 
                 }
                 else
                     repRow["parent_id"] = dtMainAcc.Rows[i]["parent_id"].ToString();
-               
+
                 repRow["Dept"] = sumDept;
                 repRow["credit"] = sumCredit;
                 repRow["Prevdept"] = sumPrevDept;
                 repRow["Prevcredit"] = sumPrevCredit;
-                repRow["balance_dept"] = sumBalDept;
-                repRow["balance_credit"] = sumBalCredit;
+
+                dBalanceTotal = (sumDept + sumPrevDept) - (sumCredit + sumPrevCredit);
+
+                if (dBalanceTotal < 0)
+                {
+                    repRow["balance_credit"] = (dBalanceTotal * -1).ToString();
+                    repRow["balance_dept"] = "0";
+
+                }
+                else
+                {
+                    repRow["balance_dept"] = (dBalanceTotal).ToString();
+                    repRow["balance_credit"] = "0";
+                }
+
                 dtReport.Rows.Add(repRow);
-                iReportCount=iReportCount+1;
+                iReportCount = iReportCount + 1;
 
 
             }
+
+
             DataView dv = dtReport.DefaultView;
             dv.Sort = "acc_no";
             DataTable sortedDT = dv.ToTable();
+
+           
+
+
 
             report.SetDataSource(sortedDT);
             report.SetParameterValue("From", (ckbSelectDate.Checked == false ? "" : dtpFrom.Value.ToString("dd/MM/yyyy")));

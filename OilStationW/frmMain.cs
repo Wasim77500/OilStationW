@@ -307,5 +307,10 @@ namespace OilStationW
         {
             new Accounts.frmOtherBranchExpenss().ShowDialog();
         }
+
+        private void rbTamplateAcc_Click(object sender, EventArgs e)
+        {
+            new Reports.frmTemplateReport().ShowDialog();
+        }
     }
 }

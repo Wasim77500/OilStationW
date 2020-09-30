@@ -59,8 +59,9 @@
             this.clmAccNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAccName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProfitCenter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmJourNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProfitCenter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProfitCenter1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nmbEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJourDetails)).BeginInit();
@@ -256,8 +257,9 @@
             this.clmAccNo,
             this.clmAccName,
             this.clmCredit,
-            this.clmProfitCenter,
             this.clmJourNote,
+            this.clmProfitCenter,
+            this.clmProfitCenter1,
             this.clmDelete});
             this.dgvJourDetails.EnableHeadersVisualStyles = false;
             this.dgvJourDetails.Location = new System.Drawing.Point(3, 149);
@@ -486,17 +488,23 @@
             this.clmCredit.Name = "clmCredit";
             this.clmCredit.ReadOnly = true;
             // 
-            // clmProfitCenter
-            // 
-            this.clmProfitCenter.HeaderText = "مركز الربحية";
-            this.clmProfitCenter.Name = "clmProfitCenter";
-            this.clmProfitCenter.ReadOnly = true;
-            // 
             // clmJourNote
             // 
             this.clmJourNote.HeaderText = "البيان";
             this.clmJourNote.Name = "clmJourNote";
             this.clmJourNote.Width = 150;
+            // 
+            // clmProfitCenter
+            // 
+            this.clmProfitCenter.HeaderText = "مركز التكلفة";
+            this.clmProfitCenter.Name = "clmProfitCenter";
+            this.clmProfitCenter.ReadOnly = true;
+            // 
+            // clmProfitCenter1
+            // 
+            this.clmProfitCenter1.HeaderText = "مركز التكلفة1";
+            this.clmProfitCenter1.Name = "clmProfitCenter1";
+            this.clmProfitCenter1.ReadOnly = true;
             // 
             // clmDelete
             // 
@@ -582,8 +590,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAccName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCredit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmJourNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProfitCenter1;
         private System.Windows.Forms.DataGridViewImageColumn clmDelete;
     }
 }

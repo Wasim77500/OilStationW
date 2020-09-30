@@ -99,6 +99,16 @@ namespace OilStationW.Accounts
 
                 
             }
+            else if (e.ColumnIndex == clmProfitCenter1.Index)
+            {
+                frmFindProfitCenter1 frm = new frmFindProfitCenter1();
+                frm.ShowDialog();
+                if (frm.strAccName != "")
+                    dgvJourDetails[clmProfitCenter1.Index, e.RowIndex].Value = frm.strAccName;
+
+
+
+            }
             else if (e.ColumnIndex== clmJourNote.Index)
             {
                 frmTextDetail frm = new frmTextDetail();
@@ -313,7 +323,7 @@ namespace OilStationW.Accounts
             dgvJourDetails.Rows.Clear();
             ConnectionToMySQL cnn = new ConnectionToMySQL();
             DataTable dtJournalData = cnn.GetDataTable("SELECT h.Pkid, h.stat, Branch_id, jour_no, trans_name, trans_id, date_format(jour_date,'%d/%m/%Y') jour_date, jour_note,Person,trans_no, " +
-                          "  d.pkid dpkid, d.stat dstat, curr_id,(select c.curr_name from currency c where c.pkid=d.curr_id) curr_name, acc_id, main_value, jour_value, exchange_Rate, jour_details,profitCenter, " +
+                          "  d.pkid dpkid, d.stat dstat, curr_id,(select c.curr_name from currency c where c.pkid=d.curr_id) curr_name, acc_id, main_value, jour_value, exchange_Rate, jour_details,profitCenter,profitCenter1 " +
                            " a.acc_no, a.acc_name " +
                           "  FROM journal_header h " +
                           "  join journal_details d " +
@@ -359,7 +369,7 @@ namespace OilStationW.Accounts
 
                 dgvJourDetails[clmJourNote.Index, i].Value= dtJournalData.Rows[i]["jour_details"].ToString();
                 dgvJourDetails[clmProfitCenter.Index, i].Value = dtJournalData.Rows[i]["profitCenter"].ToString();
-
+                dgvJourDetails[clmProfitCenter1.Index, i].Value = dtJournalData.Rows[i]["profitCenter1"].ToString();
 
                 decimal dCreditTemp = Convert.ToDecimal(txtCreditTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmCredit.Index, i].Value);
                 decimal dDebitTemp = Convert.ToDecimal(txtDeptTotal.Text.Trim()) + Convert.ToDecimal(dgvJourDetails[clmDept.Index, i].Value);
@@ -392,6 +402,7 @@ namespace OilStationW.Accounts
 
             btnSave.Enabled = false;
             bLoad = false;
+            dgvJourDetails.Rows.Add();
         }
 
         private bool CheckEntries()
@@ -493,6 +504,7 @@ namespace OilStationW.Accounts
                 ",1" +
                 ",'" + dgvJourDetails[clmJourNote.Index, i].Value + "'" +
                 ",'" + dgvJourDetails[clmProfitCenter.Index, i].Value + "'" +
+                ",'" + dgvJourDetails[clmProfitCenter1.Index, i].Value + "'" +
                ")");
                 if (icheck <= 0)
                 {
@@ -574,6 +586,7 @@ namespace OilStationW.Accounts
                 ",1" +
                 ",'" + dgvJourDetails[clmJourNote.Index, i].Value + "'" +
                 ",'" + dgvJourDetails[clmProfitCenter.Index, i].Value + "'" +
+                ",'" + dgvJourDetails[clmProfitCenter1.Index, i].Value + "'" +
                ")");
                 if (icheck <= 0)
                 {

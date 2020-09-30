@@ -27,10 +27,10 @@
     <ProductName>برنامج المحطات</ProductName>
     <PublisherName>شركة الفرات</PublisherName>
     <SuiteName>شركة الفرات</SuiteName>
-    <MinimumRequiredVersion>1.0.0.21</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.32</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>33</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -185,6 +185,12 @@
     </Compile>
     <Compile Include="Accounts\frmFindJournal.Designer.cs">
       <DependentUpon>frmFindJournal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmFindProfitCenter1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmFindProfitCenter1.Designer.cs">
+      <DependentUpon>frmFindProfitCenter1.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounts\frmFindProfitCenter.cs">
       <SubType>Form</SubType>
@@ -436,6 +442,12 @@
     <Compile Include="Purchases\frmVendors.Designer.cs">
       <DependentUpon>frmVendors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\cryRepAccSheetSummary.cs">
+      <DependentUpon>cryRepAccSheetSummary.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\cryRepAccSheet.cs">
       <DependentUpon>cryRepAccSheet.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -519,6 +531,12 @@
     </Compile>
     <Compile Include="Reports\frmSalesInvoiceRep.Designer.cs">
       <DependentUpon>frmSalesInvoiceRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmTemplateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmTemplateReport.Designer.cs">
+      <DependentUpon>frmTemplateReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmTrialBalanceOld.cs">
       <SubType>Form</SubType>
@@ -607,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmFindJournal.resx">
       <DependentUpon>frmFindJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmFindProfitCenter1.resx">
+      <DependentUpon>frmFindProfitCenter1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmFindProfitCenter.resx">
       <DependentUpon>frmFindProfitCenter.cs</DependentUpon>
@@ -739,6 +760,10 @@
     <EmbeddedResource Include="Purchases\frmVendors.resx">
       <DependentUpon>frmVendors.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\cryRepAccSheetSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryRepAccSheetSummary.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\cryRepAccSheet.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryRepAccSheet.cs</LastGenOutput>
@@ -789,6 +814,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmSalesInvoiceRep.resx">
       <DependentUpon>frmSalesInvoiceRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmTemplateReport.resx">
+      <DependentUpon>frmTemplateReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmTrialBalanceOld.resx">
       <DependentUpon>frmTrialBalanceOld.cs</DependentUpon>
